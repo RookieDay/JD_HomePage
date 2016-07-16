@@ -1,0 +1,101 @@
+1.favicon.ico 为网址打开后标签前面的那个小图，如果后来不显示了，可以清理缓存浏览记录试试。
+  <link rel="shortcut icon" href=" favicon.ico" />
+2.clearfix清除浮动的方法
+	Clearfix的使用场景：
+	a.父盒子要把所有的子盒子包裹住。
+	b.父盒子是包裹正行的 div元素，需要前后进行清除浮动。
+		.aside{
+			height:300px;
+			width:200px;
+			float:left;
+		}
+		.main{
+			height:300px;
+			width:200px;
+			float:left;
+		}
+		//类似包裹起来两个要浮动的元素
+		.clearfix {
+			display: table; /*  触发bfc，div具有的包裹性*/
+		}
+		//类似前后形成一堵墙 height:0 
+		.clearfix:before, .clearfix:after {
+			content: "";
+			display: block;
+			clear: both;
+			height: 0;
+			visibility: hidden;
+		}
+		//针对IE的处理
+		.clearfix {
+			_zoom: 1; 
+		}
+<div class="header">
+	header
+</div>
+<div class="wrap clearfix">
+	<div class="aside">aside</div>
+	<div class="main">main</div>
+</div>
+<div class="footer">
+	footer
+</div>
+
+3.Sublime Text3 设置行号
+--Perferences->key Bindings-user
+[
+    {
+        "keys": ["alt+l"],
+        "command": "toggle_setting",
+        "args":
+        {
+            "setting": "line_numbers"
+        }
+    }
+]
+
+4.小标签（s,del,em,I,u,ins…）经常使用做一些效果图(比如小三角)，因为他们轻量级 属性少
+5.复合选择器的样式优先级核算： （注意权重 否则可能会失效）
+	important > 行 > ID > 类 > 标签
+	复合选择器 的优先级根据四个层次来算，首先是行内最高。
+	其次，比较所有的id选择器的个数，个数多的为高。
+	再次比较类选择器的个数，个数多的为高，
+	最后比较标签选择器的个数，个数多的为高。
+			.aside .aside-dt h1 {
+				background-color: silver;
+			}
+
+			.aside #title-txt #id-title {
+				background-color: yellow;
+			}
+			/*
+			*       0，0，2， 1
+			*       0，2，1， 0
+			*       行内, ID, Class，标签，
+			*/
+			
+5.text-indent: -9999px; 使文字不显示			
+			
+			
+			
+			
+			
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
