@@ -168,6 +168,22 @@ Cursor :    default;             鼠标变成白色箭头
 		position: relative;
 		z-index: 10;
 
+18.界面跳转
+	a链接如果不想跳转，方法如下
+	 javascript:;             <a href=”javascript:;”></a>
+	 javascript:void(0);      <a href=”javascript:void(0);”></a>
+
+19.属性冲突问题
+定位中的left和right不冲突。以left为准。
+定位中的top和bottom不冲突。以top为准。
+
+20.半透明
+	opacity: 0.5；   他可以让盒子半透明。（缺点：就是内容跟着一起半透明）
+	background：rgba(255,255,255,0.5);   C3透明度用法。
+	background：rgba(255,255,255, .5);    C3透明度用法。
+21.宽度继承
+是在加上padding值之后，和宽度的总和，等于父盒子的宽度。
+	
 
 
 

@@ -79,8 +79,8 @@
 		height: 10px;
 		background: url(../images/bannerbottom.jpg) repeat-x;
 		position: relative;
-		top: -10px;
-		/*margin-top: -10px;*/
+		/*top: -10px;*/
+		margin-top: -10px;
 	}
 	/* bannerbottom 部分end */
 
@@ -90,14 +90,92 @@
 		width: 730px;
 		height: 454px;
 		margin: 12px 0 0 220px;
-		background-color: pink;
+		/*background-color: pink;*/
 		float: left;
+		position: relative;
+	}
+	.circle {
+		position: absolute;
+		bottom: 5px;
+		left: 50%;
+		margin-left: -66px;
+	}
+	.circle .current {
+		background-color: #B61B1F;
+	}
+	.circle li {
+		width: 18px;
+		height: 18px;
+		line-height: 18px;
+		text-align: center;
+		color: #fff;
+		background-color: #3E3E3E;
+		border-radius: 50%;
+		float: left;
+		cursor: pointer;
+		margin: 0 2px;
+	}
+	.arrow {
+		position: absolute;
+		top: 50%;
+		width: 730px;
+		margin-top: -31px;
+	}
+	.arrow a {
+		display: block;
+		width: 28px;
+		height: 62px;
+		text-align: center;
+		font: 400 22px/62px "simsun";
+		color: #fff;
+		position: absolute;
+		/*background-color: pink;*/
+		/*opacity: 0.5;*/
+		background: rgba(0,0,0,0.5);
+	}
+	.arrow a:hover {
+		background: rgba(0,0,0,4);
+	}
+	.arrow-l {
+		left: 0;
+	}
+	.arrow-r {
+		right: 0;
 	}
 	.main-news {
 		width: 248px;
 		height: 453px;
 		border: 1px solid #E4E4E4;
 		float: right;
+		margin-top: 12px;
+	}
+	.main-news-faster {
+		height: 200px;
+		border-bottom: 1px dashed #E4E4E4;
+	}
+	.main-news-faster-title ,
+	.main-news-lifeservice-title {
+		height: 43px;
+		padding: 0 15px;
+		font: 400 16px/43px "microsoft yahei";
+		border-bottom: 1px dotted #E4E4E4;
+	}
+	.main-news-faster-title h3 {
+		float: left;
+	}
+	.main-news-faster-title a {
+		float: right;
+		font: 12px/43px "simsun";
+	}
+	.main-news-faster-content {
+		padding: 15px;
+	}
+	.main-news-faster-content li {
+		height: 27px;
+	}
+	.main-news-faster-content span {
+		font-weight: 700;
+		margin-right: 5px;
 	}
 	/* main部分end */
 
