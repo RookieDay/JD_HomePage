@@ -74,14 +74,99 @@
 			*       行内, ID, Class，标签，
 			*/
 			
-5.text-indent: -9999px; 使文字不显示			
-			
-			
-			
-			
-			
-		
+6.text-indent: -9999px; 使文字不显示			
+7.居中问题
 
+盒子左右居中      Margin： 0 auto;
+盒子上下居中      （父盒子给padding,  自盒子给margin。 定位）    
+
+文字左右居中：   a.text-align:center;     b.paddign:  0   10px;
+文字上下居中：   a.line-height:  盒子的高度。   b.。。。
+			
+8.	<input type="text">
+	<button>搜索</button>			
+	出现的结果之间有几个像素的距离，可以使用浮动解决这个问题
+	input {
+		float: left;
+	}
+	button {
+		float: left;
+	}	
+9.模拟鼠标
+Cursor :    pointer;             鼠标变成小手
+Cursor :    text;                鼠标变成插入条光标
+Cursor :    move;              鼠标变成四角箭头
+Cursor :    default;             鼠标变成白色箭头
+
+10.背景图不会撑开盒子 需要给定宽高
+	.search-icon1 {
+		top: 8px;
+		left: 12px;
+		width: 20px;
+		height: 15px;
+		background: url(../images/tel.png) no-repeat 0 -90px;
+	}
+	
+   图片和文字会撑开盒子（文字比较特殊）
+   在小标签（行内标签）的情况下：定位之后，不写left属性，默认的地方会出现的padding和a链接中的文字之后。	
+   给了定位和浮动的行内元素可以给宽高   
+11.圆角矩形
+	border-radius:   1em;
+	border-radius:   50%;
+	border-radius:   宽高一半（px）;
+	border-radius:   左上角  右上角  右下角  左下角;
+
+12.清除浮动四种方法 (原因：父盒子高度为0，子盒子不占位置 ---> 清除浮动目的：让父盒子有高度。）
+	a.clear: both ; 
+	b.overflow: hidden; (缺点：超出盒子部分会隐藏)
+	设置该属性以后会自动的触发块级格式化上下文BFC，它会直接作用在Box当中，把所有属于他的盒子框起来。
+	BFC(block formatting context)
+	c.单伪元素标签法	
+		.clearfix:after {
+			content: "";
+			height: 0;
+			visibility: hidden;
+			overflow: hidden;
+			display: block;
+			clear: both;
+		}
+		.clearfix {
+			*zoom:1;  /*兼容IE678*/
+		}
+	d.双伪元素标签法
+		.clearfix:before,.clearfix:after {
+			content: "";
+			display: table;
+		}
+		.clearfix:after {
+			clear: both;
+		}
+		.clearfix {
+			*zoom:1; /*兼容IE678*/
+		}
+13.盒子居中
+	左右居中：a.给盒子absolute定位，left=50%；子盒子出现在父盒子50%的位置
+			   b.让盒子移动。 Margin-left: -自身宽度一半。
+	上下居中：a.给盒子absolute定位，top=50%；
+			   b.让盒子移动。 Margin-top: -自身高度一半。
+   左右移动盒子
+	Margin正值的情况下。指的是给盒子外边距。
+	Margin负值的情况下。反方向移动盒子。（margin-left ： margin-top）
+14.继承问题
+	宽度会被继承
+	行高会被继承
+	高度不会被继承
+	文字居中（text-align:center）可以被继承
+15.鼠标放到div上，里面的a链接变颜色
+	.shortcut-item:hover a {
+				color: #C81623;
+	}
+16.Li和a的关系
+	如果鼠标放到空白处a链接变色，说明a链接撑开的li 。
+	如果鼠标放到空白处a链接不变色，说明li包含的a链接 。
+17.层级（下面两个必须一起写）
+		position: relative;
+		z-index: 10;
 
 
 
