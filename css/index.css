@@ -73,7 +73,6 @@
 	}
 	/* shortcut部分end */
 
-
 	/* bannerbottom 部分start */
 	.bannerbottom {
 		height: 10px;
@@ -86,6 +85,9 @@
 
 
 	/* main部分start */
+	.main {
+		margin-bottom: 10px;
+	}
 	.main-slider {
 		width: 730px;
 		height: 454px;
@@ -115,13 +117,13 @@
 		cursor: pointer;
 		margin: 0 2px;
 	}
-	.arrow {
+/*	.arrow {
 		position: absolute;
+		margin-top: -31px;
 		top: 50%;
 		width: 730px;
-		margin-top: -31px;
-	}
-	.arrow a {
+	}*/
+/*	.arrow a {
 		display: block;
 		width: 28px;
 		height: 62px;
@@ -129,12 +131,26 @@
 		font: 400 22px/62px "simsun";
 		color: #fff;
 		position: absolute;
-		/*background-color: pink;*/
 		/*opacity: 0.5;*/
-		background: rgba(0,0,0,0.5);
+/*		background: rgba(0,0,0,0.5);
+	}
+*/	
+	.arrow-l, .arrow-r {
+		/*display: block;*/
+		position: absolute;
+		top: 50%;
+		margin-top: -31px;
+		width: 28px;
+		height: 62px;
+		text-align: center;
+		font: 400 22px/62px "simsun";
+		color: #fff;
+		/*opacity: 0.5;*/
+		background: rgba(0,0,0,0.3);
 	}
 	.arrow a:hover {
 		background: rgba(0,0,0,4);
+		color: #fff;
 	}
 	.arrow-l {
 		left: 0;
@@ -177,5 +193,90 @@
 		font-weight: 700;
 		margin-right: 5px;
 	}
+	.main-news-lifeservice-content {
+		overflow: hidden;
+	}
+	.main-news-lifeservice-content ul {
+		width: 260px;			
+	}
+	.main-news-lifeservice-content li {
+		float: left;
+		width: 62px;
+		height: 70px;
+		border: 1px solid #E4E4E4;
+		margin-left: -1px;
+		margin-top: -1px;
+		border-top: 0;
+		position: relative;
+	}
+	.main-news-lifeservice-content a {
+		display: block;
+		padding-top: 50px;
+		text-align: center; 
+	}
+	.main-news-lifeservice-content i {
+		position: absolute;
+		top: 15px;
+		left: 18px;
+		width: 25px;
+		height: 25px;
+		background: url(../images/fly.png) no-repeat;
+	}
+	.main-news-lifeservice-content .main-icon2 {
+		background-position: 0 -25px;
+	}
+	.main-news-lifeservice-content .main-icon3 {
+		background-position: 0 -50px;
+	}
+	.main-news-lifeservice-content .main-icon4 {
+		background-position: 0 -75px;
+	}
+	.main-news-lifeservice-content .main-icon5 {
+		background-position: 0 -100px;
+	}
+	.main-news-lifeservice-content .main-icon6 {
+		background-position: 0 -125px;
+	}
+	.main-news-lifeservice-content .main-icon7 {
+		background-position: 0 -150px;
+	}
+	.main-news-lifeservice-content .main-icon8 {
+		background-position: 0 -175px;
+	}
+	.main-news-lifeservice-content .main-icon9 {
+		background-position: 0 -200px;
+	}	
+	.main-news-lifeservice-content .main-icon10 {
+		background-position: 0 -225px;
+	}	
+	.main-news-lifeservice-content .main-icon11 {
+		background-position: 0 -250px;
+	}			
+	.main-news-lifeservice-content .main-icon12 {
+		background-position: 0 -275px;
+	}		
 	/* main部分end */
 
+	
+	/* today部分start */
+	.today {
+		margin-bottom: 10px;
+	}
+	.today-l {
+		float: left;
+		width: 210px;
+	}
+	.today-r {
+		float: left;
+		overflow: hidden;
+		width: 1000px;
+		position: relative;
+	}
+	.today-r ul {
+		width: 500%;
+	}
+	.today-r li {
+		float: left;
+		margin-right: 1px;
+	}
+	/* today部分end */
