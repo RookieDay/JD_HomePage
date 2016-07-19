@@ -64,14 +64,27 @@
 	<!-- site-nav部分end -->
 	
 	<!-- topbanner部分start -->
-	<div class="topbanner">
+	<div class="topbanner" id="topBanner">
 		<div class="w tp">
 			<a href="#">
 				<img src="images/topbanner.jpg">
 			</a>
-			<a href="#" class="close-ban"></a>
+			<a href="#" class="close-ban" id="closeBan"></a>
 		</div>	
 	</div>
+
+
+	<script type="text/javascript">
+	//获取事件源和获取topBanner这个盒子
+		var closeBan = document.getElementById("closeBan");
+		var topBanner = document.getElementById("topBanner");
+	//绑定时间
+		closeBan.onclick = function () {
+			//书写事件驱动程序
+				//隐藏topBanner这个盒子
+			topBanner.style.display = "none";
+		}	
+	</script>
 	<!-- topbanner部分end  -->
 
 

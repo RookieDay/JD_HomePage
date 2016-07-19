@@ -272,9 +272,58 @@ Cursor :    default;             鼠标变成白色箭头
 	</body>
 	</html>
 
+25.
+window.alert();    window可以省略（内置对象中只有window可以省略）
+	缺点：1.不一样的浏览器显示方式不一样，兼容性不好。
+		  2.比较突然。
+	优点：直观，测试比较喜欢。（比较简单）
+
+console.log/warn/error（）    console不能省略
+	Console.log()        在控制台输出日志 （  控制台.日志()  ）                   
+	Console.warn()       在控制台输出警告  (  控制台.警告()  )
+	Console.error()       在控制台输入错误  (  控制台.错误()  )
+	用的最多的就是console.log()。测试自己的代码。
+	但是需要在控制台查看。
+
+document.write（）          document也不能省略
+	在文档中（网页中）输出内容（可以识别标签）。
+	在案例中体现。
 
 
+26.
+	1.全局变量（成员变量）
+		在方法外部声明的变量
+		方法内部，没有加var关键字声明的变量
+	2.局部变量
+		方法内部，使用var声明的变量
 
+		总结：凡是不适用var定义的变量，无论在哪儿定义的都是全局变量。
+	3.隐式全局变量
+	  不容易被发现的全局变量。（下面这个案例中的bcd）
+		  var  a  =  0; 
+		function fn(){     a = b = c = d = 1;         }
+
+		1. var a=1,b=2,c=3;   这行代码的意思是，abc公用一个var.
+		2. var a=1;b=1;c=1;   这行代码的意思是，var只给a。  
+							   （；就是一行代码的结束。）
+
+27.
+隐藏盒子
+	1.   display： none;             隐藏盒子。（不占位置）
+	2.   visibility：hidden;           隐藏盒子。（占位置）
+	3.   overflow: hidden;            隐藏超出盒子的部分。
+
+显示盒子
+	4.   display： block;             显示盒子。
+	5.   visibility：visible；          显示盒子。
+
+Js加载问题
+	1.js的加载时和html同步。（顺序加载，加载到谁，就执行谁。）
+	2.Css和html是不同步加载的。（先加载HTML，后加载css。）
+
+解决办法
+	1.js写在最后面。
+	2.window.onload = function(){    js代码写在这里。       }
 
 
 
