@@ -181,12 +181,96 @@ Cursor :    default;             鼠标变成白色箭头
 	opacity: 0.5；   他可以让盒子半透明。（缺点：就是内容跟着一起半透明）
 	background：rgba(255,255,255,0.5);   C3透明度用法。
 	background：rgba(255,255,255, .5);    C3透明度用法。
-21.宽度继承
-是在加上padding值之后，和宽度的总和，等于父盒子的宽度。
-	
 
+21.宽度继承是在加上padding值之后，和宽度的总和，等于父盒子的宽度。
 
+22. 1号盒子里面假设一排放三个浮动的盒子a b c，如果width达到盒子宽度，c盒子可能就会掉下来，为了使得abc三个盒子在一排，
+我们可以用一个2号盒子，width可能比1号盒子的大，这样我们把abc三个放入2号盒子里面 ，最多只会超出2号盒子的宽度，与1号盒子
+没有关系，这样就可以保证三个盒子在一排显示。
 
+23.层级
+	层级和占不占位置没有关系。（relative本身就是站位置的）
+	层级可以继承（拼爹）。（浮动和定位都是不能继承的）
+	定位的盒子是最高的。（相比的是标准流和浮动的盒子。）
+	只有定位的盒子才有层级。
+	如果都有定位，后续的盒子会压住前面的盒子。
+			
+		<!DOCTYPE html>
+		<html>
+		<head lang="en">
+			<meta charset="utf-8">
+			<title></title>
+			<style type="text/css">
+				.box {
+					width: 510px;
+					height: 300px;
+					margin: 100px auto;
+				}
+				.text {
+					float: left;
+					width: 100px;
+					height: 200px;
+					margin-left: -1px;
+					border: 1px solid #ccc;
+					position: relative;
+				}
+				.text:hover {
+					border: 1px solid #f40;
+					position: relative;
+					/*z-index: 1;*/
+				}
+			</style>
+		</head>
+		<body>
+			<div class="box">
+				<div class="text"></div>
+				<div class="text"></div>
+				<div class="text"></div>
+				<div class="text"></div>
+				<div class="text"></div>
+			</div>
+		</body>
+		</html>
+
+24.绝对定位sample 
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>23绝对定位居中显示的demo.html</title>
+		<style>
+			* { padding: 0; margin: 0; }
+			.banner {
+				width: 400px;
+				margin: 0 auto;
+				background-color: teal;
+				height: 400px;
+				position: relative;
+				
+			}
+			.slide-r {
+				right: 0;
+			}
+			.slide-l, .slide-r {
+				height: 30px;
+				width: 20px;
+				background-color: #ccc;
+				border: 1px solid #000;
+				color: #fff;
+				position: absolute;
+				top: 50%;
+				margin-top: -15px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<div class="slide-l">&lt;</div>
+			<div class="slide-r">&gt;</div>
+		</div>
+	</body>
+	</html>
 
 
 
