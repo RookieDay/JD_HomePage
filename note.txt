@@ -272,9 +272,108 @@ Cursor :    default;             鼠标变成白色箭头
 	</body>
 	</html>
 
+25.
+window.alert();    window可以省略（内置对象中只有window可以省略）
+	缺点：1.不一样的浏览器显示方式不一样，兼容性不好。
+		  2.比较突然。
+	优点：直观，测试比较喜欢。（比较简单）
+
+console.log/warn/error（）    console不能省略
+	Console.log()        在控制台输出日志 （  控制台.日志()  ）                   
+	Console.warn()       在控制台输出警告  (  控制台.警告()  )
+	Console.error()       在控制台输入错误  (  控制台.错误()  )
+	用的最多的就是console.log()。测试自己的代码。
+	但是需要在控制台查看。
+
+document.write（）          document也不能省略
+	在文档中（网页中）输出内容（可以识别标签）。
+	在案例中体现。
 
 
+26.
+	1.全局变量（成员变量）
+		在方法外部声明的变量
+		方法内部，没有加var关键字声明的变量
+	2.局部变量
+		方法内部，使用var声明的变量
 
+		总结：凡是不适用var定义的变量，无论在哪儿定义的都是全局变量。
+	3.隐式全局变量
+	  不容易被发现的全局变量。（下面这个案例中的bcd）
+		  var  a  =  0; 
+		function fn(){     a = b = c = d = 1;         }
+
+		1. var a=1,b=2,c=3;   这行代码的意思是，abc公用一个var.
+		2. var a=1;b=1;c=1;   这行代码的意思是，var只给a。  
+							   （；就是一行代码的结束。）
+
+27.
+隐藏盒子
+	1.   display： none;             隐藏盒子。（不占位置）
+	2.   visibility：hidden;           隐藏盒子。（占位置）
+	3.   overflow: hidden;            隐藏超出盒子的部分。
+
+显示盒子
+	4.   display： block;             显示盒子。
+	5.   visibility：visible；          显示盒子。
+
+Js加载问题
+	1.js的加载时和html同步。（顺序加载，加载到谁，就执行谁。）
+	2.Css和html是不同步加载的。（先加载HTML，后加载css。）
+
+解决办法
+	1.js写在最后面。
+	2.window.onload = function(){    js代码写在这里。       }
+	
+28.Js中的className问题
+JS中的className就是css中或者html中的class属性。
+
+29.
+简单数据类型。
+String        Number      Boolean        null       undefined
+字符串       数字        布尔           空         未定义
+“”         0123        true/false       自己       还没有定义
+
+String类型转换
+      1. 变量+ '''' 
+	  2. String(变量)
+      3. a++  a= a+1  不是一样的：a是String类型的时候后面的结果是a1;
+Number类型
+	  1、进制问题。
+		 var result = 0xb;  //表示十六进制
+		 var result1 = 020;//表示八进制
+
+	  2、丢失精度。
+		0.1+0.2 = 0.30000000000000004
+	  3、数据类型转换
+		1. x-1  x*1  x/1      变成Number类型（只有String类型）
+		2. Number(变量)
+		如果变量中包含字母，返回一个NaN.
+Boolean类型
+      1. 使用 !!（boolean值不变）
+          false、undefined 、null、0、“” 为 false
+          true、1、“somestring”、[Object] 为 true
+	  2. Boolean();
+	  
+任何数据类型，都可以转换成布尔类型。
+
+null和undefined（任何数字和undefined相加(运算)都是NaN）
+null和undefined有最大的相似性。看看null == undefined的结果(true)也就更加能说明这点。不过相似归相似，还是有区别的，就是和数字运算时，10 + null结果为：10；10 + undefined结果为：NaN。
+     
+复杂数据类型。
+
+对象（Object），函数(function)，数组（array），日期(Date)，正则...........
+parseInt（）；取整
+	1、取整      parseInt(只能放一个值);  收个字符必须为数字。Or:NaN.
+	2、parseInt(变量，进制) ：这个方法能够让一个指定进制的数变为十进制。
+       十进制值=parseInt(a,进制)  （你告诉我进制，我就敢给你转换成十进制）
+
+        指定进制的值 = number(十进制).toString(指定的进制);
+       （你给我一个十进制的值，在告诉我进制，我就能转换成那个进制的值）
+通过这两个方法我们可以完成，任意进制的转换。
+parseFloat（）; 取小数
+只有一个用法就是：取值（取小数）。
+	
 
 
 

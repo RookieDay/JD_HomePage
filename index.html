@@ -6,8 +6,73 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="shortcut icon" href="favicon.ico">
+   	<style type="text/css">
+   		.mask {
+   			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.5);
+			position: fixed;
+			z-index: 30;
+			display: none;
+   		}
+   		.login {
+   			width: 400px;
+   			height: 300px;
+   			margin: 200px auto;
+   			background-color: #fff;
+   		}
+		#closeMask {
+			float: right;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			font: 400 20px/30px "simsun";
+			background-color: pink;
+			cursor: pointer;
+		}
+   	</style>
+   	<script type="text/javascript">
+   		window.onload = function () {
+   			var li1 = document.getElementById("li1");
+   			var li2 = document.getElementById("li2");
+   			var li3 = document.getElementById("li3");
+   			var li4 = document.getElementById("li4");
+   			var li5 = document.getElementById("li5");
+   			var img = document.getElementById("img");
+   			li1.onmouseover = function () {
+   				img.src = "images/11.jpg";
+   				li1.className = "current";
+   			}
+   			li2.onmouseover = function () {
+   				img.src = "images/22.jpg";
+   				li2.className = "current";
+   			}
+   			li3.onmouseover = function () {
+   				img.src = "images/33.jpg";
+   				li3.className = "current";
+   			}
+   			li4.onmouseover = function () {
+   				img.src = "images/44.jpg";
+   				li4.className = "current";
+   			}
+   			li5.onmouseover = function () {
+   				img.src = "images/55.jpg";
+   				li5.className = "current";
+   			}
+
+   		}
+   	</script>
 </head>
 <body>
+
+	<!-- 模态部分start -->
+	<div class="mask" id="mask">
+		<div class="login">
+			<span id="closeMask">×</span>
+		</div>
+	</div>
+	<!-- 模态部分start -->
+
 	<!-- site-nav部分start -->
     <div class="site-nav">
         <div class="w">
@@ -22,7 +87,7 @@
 			<div class="fr site-nav-r">				
 				<ul>
 					<li>
-						<a href="#">你好，请登录</a>&nbsp;
+						<a href="#" id="loginA">你好，请登录</a>&nbsp;
  						<a href="#" class="col-red">免费注册</a>
 					</li>
 					<li class="line"></li>
@@ -63,15 +128,43 @@
 	</div>
 	<!-- site-nav部分end -->
 	
+
+	<script type="text/javascript">
+		var loginA = document.getElementById("loginA");
+		var closeMask = document.getElementById("closeMask")
+		var mask = document.getElementById("mask");
+		loginA.onclick = function () {
+			mask.style.display = "block";
+		}
+		closeMask.onclick = function () {
+			mask.style.display = "none";
+		}		
+	</script>
+
+
+
 	<!-- topbanner部分start -->
-	<div class="topbanner">
+	<div class="topbanner" id="topBanner">
 		<div class="w tp">
 			<a href="#">
 				<img src="images/topbanner.jpg">
 			</a>
-			<a href="#" class="close-ban"></a>
+			<a href="#" class="close-ban" id="closeBan"></a>
 		</div>	
 	</div>
+
+
+	<script type="text/javascript">
+	//获取事件源和获取topBanner这个盒子
+		var closeBan = document.getElementById("closeBan");
+		var topBanner = document.getElementById("topBanner");
+	//绑定时间
+		closeBan.onclick = function () {
+			//书写事件驱动程序
+				//隐藏topBanner这个盒子
+			topBanner.style.display = "none";
+		}	
+	</script>
 	<!-- topbanner部分end  -->
 
 
@@ -248,14 +341,14 @@
 	<!-- main部分start -->
 	<div class="w main clearfix">
 		<div class="main-slider">
-			<a href="#"><img src="images/newyear.jpg"></a>
+			<a href="#"><img src="images/newyear.jpg" id="img"></a>
 			<ul class="circle">
-				<li>1</li>
-				<li class="current">2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
+				<li id="li1">1</li>
+				<li id="li2">2</li>
+				<li id="li3">3</li>
+				<li id="li4">4</li>
+				<li id="li5">5</li>
+				<li class="current">6</li>
 			</ul>
 			<div class="arrow">
 				<a href="javascript:;" class="arrow-l"><</a>
