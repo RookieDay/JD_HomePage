@@ -324,6 +324,56 @@ Js加载问题
 解决办法
 	1.js写在最后面。
 	2.window.onload = function(){    js代码写在这里。       }
+	
+28.Js中的className问题
+JS中的className就是css中或者html中的class属性。
+
+29.
+简单数据类型。
+String        Number      Boolean        null       undefined
+字符串       数字        布尔           空         未定义
+“”         0123        true/false       自己       还没有定义
+
+String类型转换
+      1. 变量+ '''' 
+	  2. String(变量)
+      3. a++  a= a+1  不是一样的：a是String类型的时候后面的结果是a1;
+Number类型
+	  1、进制问题。
+		 var result = 0xb;  //表示十六进制
+		 var result1 = 020;//表示八进制
+
+	  2、丢失精度。
+		0.1+0.2 = 0.30000000000000004
+	  3、数据类型转换
+		1. x-1  x*1  x/1      变成Number类型（只有String类型）
+		2. Number(变量)
+		如果变量中包含字母，返回一个NaN.
+Boolean类型
+      1. 使用 !!（boolean值不变）
+          false、undefined 、null、0、“” 为 false
+          true、1、“somestring”、[Object] 为 true
+	  2. Boolean();
+	  
+任何数据类型，都可以转换成布尔类型。
+
+null和undefined（任何数字和undefined相加(运算)都是NaN）
+null和undefined有最大的相似性。看看null == undefined的结果(true)也就更加能说明这点。不过相似归相似，还是有区别的，就是和数字运算时，10 + null结果为：10；10 + undefined结果为：NaN。
+     
+复杂数据类型。
+
+对象（Object），函数(function)，数组（array），日期(Date)，正则...........
+parseInt（）；取整
+	1、取整      parseInt(只能放一个值);  收个字符必须为数字。Or:NaN.
+	2、parseInt(变量，进制) ：这个方法能够让一个指定进制的数变为十进制。
+       十进制值=parseInt(a,进制)  （你告诉我进制，我就敢给你转换成十进制）
+
+        指定进制的值 = number(十进制).toString(指定的进制);
+       （你给我一个十进制的值，在告诉我进制，我就能转换成那个进制的值）
+通过这两个方法我们可以完成，任意进制的转换。
+parseFloat（）; 取小数
+只有一个用法就是：取值（取小数）。
+	
 
 
 
