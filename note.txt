@@ -374,12 +374,185 @@ parseInt（）；取整
 parseFloat（）; 取小数
 只有一个用法就是：取值（取小数）。
 	
+30.
+	变量声明提升
+	就是指：在函数中使用变量在定义变量之前，一定会出现变量声明提升。
+		1.function 函数作用域里的变量会遮盖了上层作用域变量。（就近原则）
+		2.在function作用域内，变量的声明被提升了，但是没有提升变量值。
+
+<script>
+    var num = 10;
+    fun();
+    function fun(){
+        console.log(num);
+        var num = 20;
+    }
+ </script>
+输出的是undefined 因为使用的是函数里面的变量  就近原则 变量提升
+
+31.函数重点
+	1．函数不调用不执行。
+	2．函数在加载的时候，只加载函数名，不加载函数体。
+	3．函数名和函数名（）他们两个不一样。
+	（函数名指的是函数体，函数()调用）
+
+32.
+三种定义函数的方式：
+	a.关键字function来构造
+	b.函数直接量形式
+	c.通过Function构造函数形式定义函数
+	a.
+		function fn() {
+			alert(1);
+		}
+		fn();  //这句话可以写在前面
+
+	b.
+		var fn2 = function () {
+			alert(2);
+		}
+		fn2(); //这句话不能写在前面
+
+	c.
+		var fn3 = new Function("alert(3)");
+		fn3();	//这句话不能写在前面
+		
+	1.第一种声明，使用函数位置没有顺序问题
+	2.后两种，必须写到函数声明的后面
+
+f1();
+console.log(c);  -->9
+console.log(b);  -->9
+console.log(a);  not defined
+
+function f1(){
+	var a = b = c = 9; 这里的a是局部变量 b/c是全局变量 因为它们前面没有var
+	console.log(a) -->9
+	console.log(b) -->9
+	console.log(c) -->9
+}
+
+33. 函数参数
+	形参（形式上参与运算的变量）
+		如果想要用到参数，必须用形参来给实参占位置。否则无法调用。
+	实参（实际上参与运算的变量）
+		参数如果没有被使用：传或者不传参数，不影响函数执行。
+		参数必须全部被使用的情况下：
+		1．实参少于形参，报错。
+		2．实参等于形参，执行。
+		3．实参大于形参，执行
+	查询函数参数
+		1．查询形参个数
+			a)	我们用函数名的形式来查询形参。   函数名.length
+			b)	单独打印函数名：函数体。    
+			c)	 函数名 == 函数体！        函数名()  == 调用函数！
+		2．查询实参个数
+			a)	我们用一个对象的方法来查询实参。（arguments.length）
+			b)	只有函数中才有arguments。
+			c)	arguments他其实就是一个数组，所在函数实参的数组。
+
+34.
+获得标签内部内容
+	如果一个标签有value属性，我们就用  :    标签.value        获得。
+	如果一个标签没有value属性，我们就用  :  标签.innerHTML   获得。
+this
+	函数的调用者。(要在函数内部使用)
+label  for  id
+	<label for="inp">请输入一个名人：</label>
+	<input type="text" id="inp"/>
+	label标签使用：点击label内容,插入条光标会调到for指定的id的标签中。(为他人做嫁衣，为for指定的id所在的标签)
+
+35.新事件
+获得焦点事件：    onfocus           获得插入条光标会触动这个事件
+失去焦点事件：    onblur            失去插入条光标会触动这个事件。
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 260px;
+            margin: 200px auto;
+        }
+        .box input {
+            width: 200px;
+            height: 40px;
+            padding-left: 16px;
+            background: url(images/left.jpg) no-repeat;
+            float: left;
+            border: 0;
+            outline-style: none;
+            color: #ccc;
+        }
+        .box button {
+            width: 42px;
+            height: 40px;
+            background: url(images/right.jpg) no-repeat;
+            float: left;
+            border: 0;
+            outline-style: none;
+            cursor: pointer;
+        }
 
 
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="inp" value="今日特价优惠85折"/>
+        <button></button>
+    </div>
+    <script>
+        //需求：点击input,获取光标，文字消失。如果没有文字的情况下，点击外面文字显示。
+                //技术点：如何让文字消失。   input标签.value = "";
+                //       获得焦点事件/失去焦点事件    onfocus/onblur
+        //步骤
+        //1.获取事件源
+        //2.绑定事件
+        //3.书写事件驱动程序
+            //(1).判断如果文字为今日特价优惠85折，文字消失，否则文字不能变。
+        //1.获取事件源
+        var ccc = document.getElementById("inp");
+        //2.绑定事件
+        ccc.onfocus = function () {
+            //3.书写事件驱动程序
+            //(1).判断如果文字为今日特价优惠85折，文字消失，否则文字不能变。
+            if(ccc.value == "今日特价优惠85折"){
+                ccc.value = "";
+            }
 
+        }
+        //2.绑定事件
+        ccc.onblur = function () {
+            //3.书写事件驱动程序
+            //(1).判断如果文字为今日特价优惠85折，文字消失，否则文字不能变。
+            if(ccc.value == ""){
+                ccc.value = "今日特价优惠85折";
+                ccc.style.color = "#ccc";
+            }else{
+                ccc.style.color = "#333";
+            }
+//            else{
+//                ccc.value = ccc.value;
+//            }
+        }
+    </script>
+</body>
+</html>
 
+36.
+内部定义的方法（获得焦点方法，全选方法）focus()/select()
+	alert();          调用者    window
+	parseInt()        调用者    window
+	parseFloat()      调用者    window
+	focus() / select()    所有标签。（可以输入内容的所有标签）
+	focus() ： 调用者是所有可以输入文本的标签。
+			 使用方法：   标签.focus();   标签获得插入条光标。
+	select() ： 调用者是所有可以输入文本的标签。
+			  使用方法：   标签.select();   标签内部文本全部被选定。
 
-
-
-
-
+	输入事件
+	oninput    输入内容的时候触动这个事件（输入和删除都会触动这个事件）   
+	onpropertychange    兼容IE678。
