@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.box {
+			width: 400px;
+			margin: 200px auto;
+			position: relative;
+		}
+		input {
+			height: 35px;
+			padding: 10px;
+		}
+		label {
+			position: absolute;
+			top: 20px;
+			left: 13px;
+			color: #ccc;
+		/*	width: 100px;
+			height: 30px;
+			background-color: pink;*/
+			cursor: text;
+		}
+	</style>
+</head>
+<body>
+
+<div class="box">
+	<label for="inp" id="lab">Input...</label>
+	<input type="text" id="inp">
+</div>
+<script type="text/javascript">
+	var inp = document.getElementById("inp");
+	var lab = document.getElementById("lab");
+
+	inp.oninput = function () {
+		if(this.value == "") {
+			lab.style.display = "block";
+		} else {
+			lab.style.display = "none";
+		}
+	}
+</script>
+</body>
+</html>
