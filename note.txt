@@ -556,3 +556,7 @@ label  for  id
 	输入事件
 	oninput    输入内容的时候触动这个事件（输入和删除都会触动这个事件）   
 	onpropertychange    兼容IE678。
+37.
+isNaN();      调用者：window.    有参数；  有返回值（true或false）
+             true: 符合一个标准：不是一个数字的标准！（不是数字）
+             false：不符合一个标准：不是一个数字的标准！(是数字)
