@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AAA</title>
+	<style type="text/css">
+		.box {
+			width: 600px;
+			margin: 200px auto; 
+		}
+		.ip {
+			display: inline-block;
+			width: 200px;
+			height: 22px;
+			border: 1px solid #ccc;	
+			font: 12px/22px "simsun";
+			padding-left: 25px;
+			background-color: #eee;
+			color: #aaa;
+		}
+		.right {
+			background: #bbffbd url(images/right.png) no-repeat 5px center; 
+			color: #06cc00;
+			border: 1px solid #0cc08; 
+		}
+		.wrong {
+			background: #ffdaff url(images/wrong.png) no-repeat 5px center; 
+			color: #cc0090;
+			border: 1px solid #0ccc08; 
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<label for="inp">请输入想要查询的学号：</label>
+	<input type="text" id="inp">
+	<span id="sp" class="ip">请输入从1-150直接的学号</span>
+</div>
+<script type="text/javascript">
+	var inp = document.getElementById("inp");
+	var sp = document.getElementById("sp");
+	inp.onblur = function () {
+		var val = this.value;
+		if(val == ""){
+			sp.className = "ip  wrong";
+			sp.innerHTML = "请输入学号";
+		} else if (val < 1 || val > 150) {
+			sp.className = "ip  wrong";
+			sp.innerHTML = "请重新输入，没有此学号";				
+		} else if (parseInt(val) != val) {
+			sp.className = "ip  wrong";
+			sp.innerHTML = "不能输入非法字符";							
+		} else if (isNaN(val)) {
+			sp.className = "ip  wrong";
+			sp.innerHTML = "不能输入非法字符";								
+		}else {
+			sp.className = "ip  right";
+			sp.innerHTML = "正确";				
+
+		}
+	}
+</script>
+</body>
+</html>

@@ -12,6 +12,7 @@
 		input {
 			height: 35px;
 			padding: 10px;
+			line-height: 35px;
 		}
 		label {
 			position: absolute;
@@ -35,12 +36,19 @@
 	var inp = document.getElementById("inp");
 	var lab = document.getElementById("lab");
 
-	inp.oninput = function () {
+	inp.oninput = inp.onpropertychange = function () {
 		if(this.value == "") {
 			lab.style.display = "block";
 		} else {
 			lab.style.display = "none";
 		}
+	}
+	// inp.onpropertychange = function() {
+	// 	if(this.value == "") {
+	// 		lab.style.display = "block";
+	// 	} else {
+	// 		lab.style.display = "none";
+	// 	}
 	}
 </script>
 </body>
