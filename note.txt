@@ -363,6 +363,7 @@ null和undefined有最大的相似性。看看null == undefined的结果(true)也就更加能说明这
 复杂数据类型。
 
 对象（Object），函数(function)，数组（array），日期(Date)，正则...........
+
 parseInt（）；取整
 	1、取整      parseInt(只能放一个值);  收个字符必须为数字。Or:NaN.
 	2、parseInt(变量，进制) ：这个方法能够让一个指定进制的数变为十进制。
@@ -560,3 +561,413 @@ label  for  id
 isNaN();      调用者：window.    有参数；  有返回值（true或false）
              true: 符合一个标准：不是一个数字的标准！（不是数字）
              false：不符合一个标准：不是一个数字的标准！(是数字)
+
+38.
+直接alert();如果是undefined就不是关键字，可以用。
+如果报错，或者直接弹出对象或者方法，那么就是关键字。
+39.数组定义
+var  arr =  [1,2,3 ]; 
+var arr2 = new Array(“a,b,c”);
+
+
+
+40.所有的数据类型名字都是用String定义的（面试用）
+var x = [‘abcde’ ,  123456]; 
+var y = typeof  typeof  x[1]; ----> "string" (var y = typeof(123456) var z = typeof(z) z-->string)
+
+
+
+41.
+document.getElementsByTagName();   根据标签名获得标签。
+这个方法获得的标签被封装到了一个数组中被返回。
+调用者：document。   有参数。   有返回值。（数组，标签数组）
+   哪怕只有一个标签，也返回一个数组，装着这个标签。
+接收返回值的时候，必须用数组接收。
+
+调用者还可以是标签。如果是标签，那么将在这个标签下，寻找想要查找的标签。（缩小范围）
+
+//技术点：如何去顶一个input有没有被选定。
+           //看标签中有没有checked.
+           //***在js当中如果标签的checked属性为true那就为选定，为false为没选定。
+
+42.
+排他性是指一种物品具有可以阻止其他人使用该物品的特性。
+排他性思想：
+在程序中但凡是遇到只让自己怎么样，不让别人怎么样的效果，都要用到排他性思想。而排他性思想往往需要使用到for循环进行群控制。
+步骤：一定是先排他，再控制自己。
+
+43.对this的理解：重要
+	<!DOCTYPE html>
+	<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				padding: 100px;
+			}
+			button {
+				margin: 10px;
+			}
+			.current {
+				background-color: yellow;
+			}
+		</style>
+		<script>
+			window.onload = function () {
+
+				//需求：鼠标放到按钮上，让这个按钮变亮，其他的不能变亮。（pink）
+						//技术点：从今天开始，我们用js控制样式，只能控制类名。
+				//步骤
+				//1.获取事件源
+				//2.绑定事件
+				//3.书写事件驱动程序
+					//(1).让所有的盒子都变暗。
+					//(2).让触动事件的盒子变亮。
+				//1.获取事件源
+				var arrBtn = document.getElementsByTagName("button");
+
+				//遍历按钮数组，获得每一个数组中的按钮
+				// 第一个for循环：为了给按钮绑定事件而生
+				for(var i=0;i<arrBtn.length;i++){
+
+					//2.绑定事件
+					arrBtn[i].onmouseover = function () {
+						//3.书写事件驱动程序(排他思想)
+							//(1).让所有的盒子都变暗。(干掉所有人)
+							//第二个for循环：为了干掉所有人而生
+							for(var j=0; j<arrBtn.length;j++){
+								arrBtn[j].className = "";
+							}
+							//(2).让触动事件的盒子变亮。(剩下我一个)
+							//为什么没有用arrBtn[i],此时的i已经变成5了
+							this.className = "current";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+	<button class="current">按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+	</body>
+	</html>
+
+44.属性绑定（重点！！！） 看tab.html的sample
+	1.只有复杂数据类型能够绑定属性，绑定完毕能够随时获得。
+	2.既能绑定复杂数据类型，又能绑定简单数据类型。
+
+我们可以人为得到为一些复杂数据类型绑定属性。
+什么是属性绑定：就是在原有的变量（复杂数据类型）上加一个点外加一个变量名，在给这个属性赋值，就可以做到一个变量绑定属性。
+属性绑定可以在一定程度上，代替我们传递参数。
+
+次知识点为了解内容：
+（前提：必须是复杂数据类型才能绑定属性）
+属性绑定不只能绑定简单数据类型，还能绑定复杂数据类型。
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 300px;
+            height: 270px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        ul {
+            list-style: none;
+            width: 330px;
+            height: 30px;
+            /*overflow: hidden;*/
+        }
+        ul li {
+            float: left;
+            width: 60px;
+            height: 30px;
+            font: 400 20px/30px "simsun";
+            background-color: #ccc;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .box2 {
+            height: 240px;
+            background-color: pink;
+            /*display: none;*/
+        }
+        .box .show {
+            display: block;
+        }
+        .current {
+            background-color: pink;
+        }
+        .hidden-div {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <ul id="ul1">
+        <li class="current">男装</li>
+        <li>女装</li>
+        <li>童装</li>
+        <li>孕装</li>
+        <li>便装</li>
+    </ul>
+    <div id="div1">
+        <div class="box2 show">我是男装内容区</div>
+        <div class="box2">我是女装内容区</div>
+        <div class="box2">我是童装内容区</div>
+        <div class="box2">我是孕装内容区</div>
+        <div class="box2">我是便装内容区</div>
+    </div>
+</div>
+
+<script>
+    //需求：鼠标放到li上，li要变色，而且内容应该显示相应得到区域。
+            //技术点：随着完成代码的间接性，代码的复杂程度逐步提高。
+    //步骤
+    //1.获取事件源
+    //2.绑定事件
+    //3.书写事件驱动程序
+        //(1).利用排他思想，让li变色。
+
+
+
+    //1.获取事件源
+    var div1 = document.getElementById("div1");
+    var ul1 = document.getElementById("ul1");
+    var arrLi = ul1.getElementsByTagName("li");
+    var arrDiv = div1.getElementsByTagName("div");
+
+    for(var i=0;i<arrLi.length;i++){
+        //2.绑定事件
+        arrLi[i].aaa = i;  //属性绑定 保存i值 下面会使用 理解为给他外挂了一个属性 Json存储
+
+        arrLi[i].onmouseover = function () {
+            //3.书写事件驱动程序
+                //(1).利用排他思想，让li变色。
+            for(var j=0;j<arrLi.length;j++){
+                arrLi[j].className = "";
+//                arrDiv[j].className = "hidden-div";  基础好的同学可以研究一下
+                arrDiv[j].style.display = "none";
+            }
+
+            this.className = "current";
+//            arrDiv[this.aaa].className += "box2 hidden-div show"
+//            arrDiv[this.aaa].className = "box2 show"
+            arrDiv[this.aaa].style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>
+
+
+45. 
+	select标签本身的value值给了下面的标签option，所以option的value值就是select的value值。
+有selected这个属性的option标签是被选定或默认的标签。
+	onchange事件
+这个事件是在value值被更的时候触发的。一旦value值被更改就会触动这个事件。
+
+46.oninput/onblur/onchange   区别与联系
+	oninput: 输入事件。    只要输入或删除字母或数字都会触动这个事件。
+	onblur: 失去焦点事件。 只要标签失去焦点，就会触动这个事件。
+	onchange: 改变事件。   只要事件源的值被改变，就会触动这个事件。
+     有一个input，值:    请输入...
+	1.  点击之后离开。     2.输入一个文字就离开。 
+    3.  输入一个文字在删除他在离开。
+
+47.数组操作
+	push、unshift(添加)
+	shift、pop（删除）
+	concat      （链接）
+	join、split（转换）
+
+数组的元素添加   （push/unshift）
+	push     学习一个方法，从四部分开始
+		调用者：数组本身。    有参数。    有返回值。
+		从调用者数组的最后面插入一个元素，最后返回新数组的长度。
+		新数组的长度 = 数组.push( 新元素 ); 从数组后面插入。
+    unshift     学习一个方法，从四部分开始
+		调用者：数组本身。    有参数。    有返回值。
+		从调用者数组的最前面插入一个元素，最后返回新数组的长度。
+		新数组的长度 = 数组.unshift( 新元素 ); 从数组前面插入。
+
+数组的元素删除
+	pop 学习一个方法，从四部分开始
+		调用者：数组本身。    没有参数。    有返回值。
+		从调用者数组的最后面删除最后一个元素，最后返回被删除的元素。
+		  被删除的元素 = 数组.pop(); 从数组最后面删除一个元素。
+	shift 学习一个方法，从四部分开始
+		调用者：数组本身。    没有参数。    有返回值。
+		从调用者数组的最前面删除第一个元素，最后返回被删除的元素。
+		被删除的元素 = 数组.shift(); 从数组最前面删除第一个元素。
+
+数组的链接   concat学习一个方法，从四部分开始
+		调用者：任何数组。    有参数。    有返回值。
+		从调用者数组的最后面链接另一个数组，最后返回一个新数组（原数组不变）。
+		新数组 = 数组1.concat( 数组2 ); 把数组2链接到数组1上，返回一个新数组
+
+数组和字符串之间的转换    join/split
+		join 把数组变成字符串
+			作用是将数组各个元素是通过指定的分隔符进行连接成为一个字符串。
+			调用者：数组本身。    有没有参数都行。    有返回值（string）。
+			把调用者数组中的元素按照参数链接成一个字符串，如果没有参数用逗号链接。
+			字符串 = 数组.join(可选); 数组中的元素链成字符串。
+
+				1．参数可选。指定要使用的分隔符。
+				2．如果省略该参数，则使用逗号作为分隔符。
+				3．如果想让数组中元素无缝链接，用“”；
+				4．如果你使用空格分隔，那么他真的给你用空格分隔啊！！！“”
+		split 把字符串变成数组。   
+			split() 方法用于把一个字符串分割成字符串数组
+			调用者：字符串。    有没有参数都行。    有返回值（Array）。
+			把字符串按固定的方式分割成一个数组，参数1用什么字符分割，参数2数组最大长度。
+			数组 = 字符串.split(用什么分，分割成功后数组最大长度); 把字符串分割成数组。
+
+			参数 1。指定要使用的分隔符。
+			参数2，可选。该参数可指定返回的数组的最大长度。
+			数组切割完成后，用于切割的字符串不会出现在数组元素当中。（卸磨杀驴）
+			如果是空字符串，会把每一个字符全部当做数组中的元素来截取。
+
+48.DOM
+HTML的组成部分为节点（ Node ）
+	在HTML当中一切都是节点……
+	由结构图中我们可以看到，整个文档就是一个文档节点。
+	每一个HMTL标签都是一个元素节点（标签）。
+	标签中的文字则是文字节点。（文本）
+	标签的属性是属性节点。（属性）
+DOM节点的获得
+	操作节点，必须首先找到该元素。有三种方法来做这件事：
+	通过 id 找到 HTML 元素
+	document.getElementById("demo");
+	通过标签名找到 HTML 元素
+	document.getElementsByTagName("div");
+	通过类名找到 HTML 元素
+	document.getElementsByClassName("a");
+	通过类名查找 HTML 元素在 IE 5,6,7,8 中无效
+	标签  =   document.getElementById("demo"); 通过ID获得标签
+	他的返回值是一个标签，可以直接使用。获得属性值，设置属性。
+	标签数组= document.getElementsByTagName("div"); 通过标签名获得标签数组
+	标签数组= document.getElementsByClassName("a");通过类名获得标签数组
+	他们两个的返回值是标签数组，习惯性是遍历之后再使用。
+	特殊情况：数组中的值只有1个。      
+		   document.getElementsByTagName("div")[0];取数组中第一个元素
+		   document.getElementsByClassName("a")[0];取数组中第一个元素
+
+
+49. 判断浏览器是否支持这个方法 if(document.getElementsByClassName)
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .current {
+            background-color: yellow;
+        }
+        
+    </style>
+</head>
+<body>
+<div></div>
+<div class="box clearfix box1"></div>
+<div></div>
+<div class="box w fl"></div>
+<div></div>
+<script>
+    var arrBox = fn("box");
+    for(var i=0;i<arrBox.length;i++){
+        arrBox[i].className = "box current";
+    }
+    //需求：如果类名为多个，也要能够对比到类名中的每一个，只要有一个和传递的值相等，就复合标准
+           //兼容多个类名
+    //步骤：
+        //以前比较的是整个类名，现在要分别比较每一而
+    //1.把类名按照空格转换成数组
+    //2.遍历数组，比较数组中的每一个元素
+    //3.只有一个和传递的值相等，就把这个标签添加到新数组中
+    //定义一个通过类名可以获得标签数组的方法。（兼容IE678）
+    function fn(str){
+        //判断浏览器是否支持这个方法
+        if(document.getElementsByClassName){
+            return document.getElementsByClassName(str);
+        }else{
+            //获得所有标签
+            var allNodes = document.getElementsByTagName("*");
+            var arr = [];
+            //遍历所有标签数组
+            for(var i=0;i<allNodes.length;i++){
+                //对每一个标签的类名进行判断
+                //1.把类名按照空格转换成数组
+                var arrClassName = allNodes[i].className.split(" ");
+                //2.遍历数组，比较数组中的每一个元素
+                for(var j=0;j<arrClassName.length;j++){
+                    //3.只有一个和传递的值相等，就把这个标签添加到新数组中
+                    if(arrClassName[j] == str){
+                        //如果相等，添加到新数组
+                        arr.push(allNodes[i]);
+                    }
+                }
+            }
+            //返回新数组
+            return arr;
+        }
+    }
+</script>
+</body>
+</html>
+
+50.DOM 访问关系
+节点的访问关系，是以属性的方式存在的。
+DOM的节点并不是孤立的，因此可以通过DOM节点之间的相对关系对它们进行访问
+
+51.
+父节点  （ parentNode ）   
+	调用者就是节点。一个节点只有一个父节点。调用方式就是节点.parentNode.
+
+兄弟节点
+	Sibling就是兄弟的意思。
+	Next：下一个的意思。
+	Previous:前一个的意思。
+	nextSibling：调用者是节点。IE678中指下一个元素节点（标签）。在火狐谷歌IE9+以后都指的是下一个节点（包括空文档和换行节点）。
+	nextElementSibling：在火狐谷歌IE9都指的是下一个元素节点。
+	总结：在IE678中用nextSibling，在火狐谷歌IE9+以后用nextElementSibling
+	下一个兄弟节点=节点.nextElementSibling || 节点.nextSibling
+
+	previousSibling：调用者是节点。IE678中指前一个元素节点（标签）。在火狐谷歌IE9+以后都指的是前一个节点（包括空文档和换行节点）。
+	previousElementSibling：在火狐谷歌IE9都指的是前一个元素节点。
+	总结：在IE678中用previousSibling，在火狐谷歌IE9+以后用previousElementSibling。
+	下一个兄弟节点=节点.previousElementSibling|| 节点.previousSibling
+
+
+
+
+
+
+
+
+
+
+
+
+
+

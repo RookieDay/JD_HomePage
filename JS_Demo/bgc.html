@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AAA</title>
+	<style type="text/css">
+		select {
+			margin: 50px;
+		}
+		body {
+			background: url("images/chun1.jpg") no-repeat center top; 
+		}
+
+	</style>
+</head>
+<body>
+<select name="" id="sel">
+	<option value="0">春意盎然</option>
+	<option value="1">夏日炎炎</option>
+	<option value="2">秋风瑟瑟</option>
+	<option value="3">冬雪皑皑</option>
+</select>
+<script type="text/javascript">
+	var sel = document.getElementById("sel");
+	var bd = document.body;
+
+	sel.onchange = function () {
+		 switch (this.value) {
+		  	case "0":
+		  		bd.style.backgroundImage = "url(images/chun1.jpg)";
+		  		break;
+		  	case "1":
+		  		bd.style.backgroundImage = "url(images/xia1.jpg)";
+		  		break;
+		  	case "2":
+		  		bd.style.backgroundImage = "url(images/qiu1.jpg)";
+		  		break;
+		  	case "3":
+		  		bd.style.backgroundImage = "url(images/dong1.jpg)";
+		  		break;
+		  } 
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AAA</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.box {
+			width: 300px;
+			height: 270px;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+		ul {
+			list-style: none;
+			width: 330px;
+			overflow: hidden;
+		}
+		ul li {
+			float: left;
+			width: 60px;
+			height: 30px;
+			font: 400 20px/30px "simsun";
+			background-color: #ccc;
+			text-align: center;
+			cursor: pointer;
+		}
+		.box2 {
+			height: 240px;
+			background-color: pink;
+			/*display: none;*/
+		}
+		.box .show {
+			display: block;
+		}
+		.current {
+			background-color: pink;
+		}
+		.hidden-div {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+    <ul id="ul1">
+        <li class="current">男装</li>
+        <li>女装</li>
+        <li>童装</li>
+        <li>孕装</li>
+        <li>便装</li>
+    </ul>
+    <div id="div1">
+        <div class="box2 show">我是男装内容区</div>
+        <div class="box2">我是女装内容区</div>
+        <div class="box2">我是童装内容区</div>
+        <div class="box2">我是孕装内容区</div>
+        <div class="box2">我是便装内容区</div>
+    </div>
+</div>
+<script type="text/javascript">
+    var div1 = document.getElementById("div1");
+    var ul1 = document.getElementById("ul1");
+    var arrLi = ul1.getElementsByTagName("li");
+    var arrDiv = div1.getElementsByTagName("div");
+	for(var i = 0; i < arrLi.length; i++){
+		arrLi[i].aaa = i;
+		arrLi[i].onmouseover = function () {
+			 for(var j = 0;j < arrLi.length; j++) {
+			 	arrLi[j].className = "";
+			 	// arrDiv[j].className = "hidden-div";
+			 	arrDiv[j].style.display = "none"; //行内样式 权限高
+			 } 
+			 this.className = "current";
+			 // arrDiv[this.aaa].className = "box2 hidden-div 	show";
+			 // arrDiv[this.aaa].className = "box2	show";
+			 arrDiv[this.aaa].style.display = "block";
+		}
+	}
+
+</script>
+</body>
+</html>

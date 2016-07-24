@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .current {
+            background-color: yellow;
+        }      
+    </style>
+</head>
+<body>
+
+<div></div>
+<div class="box clearfix box1"></div>
+<div></div>
+<div class="box w fl"></div>
+<div></div>
+
+<script>
+
+    //需求：通过类名获取盒子，然后增加样式（更改背景色）。
+    //步骤：
+    //1.获取class值为box的节点（Node）。
+    //2.遍历得到的数组，然后给每一个值添加样式。
+
+    //1.获取class值为box的节点（Node）。
+    // var arrBox = document.getElementsByClassName("box");
+    var arrBox = fn("box");
+
+    //2.遍历得到的数组，然后给每一个值添加样式。
+    for(var i=0;i<arrBox.length;i++){
+//        arrBox[i].className += " current";
+        arrBox[i].className = "box current";
+    }
+
+    function fn(str) {
+    	var arr=[];
+    	if(document.getElementsByClassName) {
+    		var arr = document.getElementsByClassName(str);
+    		return arr;
+    	}
+
+    	var allNodes = document.getElementsByTagName("*");
+    	for(var i = 0; i < allNodes.length;i++) { 
+    		var arrClassName = allNodes[i].split(" ");
+    		for(var j=0;j<arrClassName.length;j++){
+                    if(arrClassName[j] == str){
+                        arr.push(allNodes[i]);
+                    }
+                }
+    	}
+    	return arr;
+    }
+
+
+</script>
+</body>
+</html>

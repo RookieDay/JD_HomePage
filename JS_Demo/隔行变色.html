@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>aaaa</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.box {
+			width: 350px;
+			margin: 150px auto;
+			overflow: hidden;
+			border: 2px solid #000;
+			padding: 10px; 
+		}
+		ul {
+			list-style: none;
+		}
+		li {
+			height: 35px;
+			font: 22px/35px "simsub"; 
+			cursor: pointer;	
+		}
+		.current {
+			background-color: red!important;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>欧元美元1.0829-0.0041</li>
+        <li>英镑美元1.4218-0.0002</li>
+        <li>美元日元118.0800+0.3000</li>
+        <li>澳元美元0.7018+0.0018</li>
+        <li>美元瑞郎1.0087+0.0014</li>
+        <li>美元加元1.4262-0.0005</li>
+        <li>美元港币7.7977-0.0193</li>
+        <li>美元人民币6.5792+0.0000</li>
+    </ul>
+    <script type="text/javascript">
+    	var arrLi = document.getElementsByTagName("li");
+    	for(var i = 0; i < arrLi.length; i++) {
+    		if (i%2 == 0)
+    		arrLi[i].style.backgroundColor = "#ccc";
+    	}
+    	for(var i = 0; i < arrLi.length; i++) {
+
+    		arrLi[i].onmouseover = fucntion () {  
+    			// 函数加载的时候只加载函数名 不加载函数体 只有触动的时候才会加载方法体，这里i一直循环 , i 一直到8
+    			// 这里可以理解为为8个li绑定了一个onmouseover事件，事件里面的内容没有加载，
+    			// 只有触动的时候才会加载，一旦触动了， 执行方法体里面的时候i已经是8了
+    			for(var j = 0; j <arrLi.length; j++) {
+    				arrLi.className = "";
+    			}
+    			this.className = "current";  //这里只能用this
+    			arrLi[i].className = "current";  //这里只能用this
+
+    		}	
+    	}
+    </script>
+</div>
+</body>
+</html>
