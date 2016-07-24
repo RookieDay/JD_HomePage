@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AAA</title>
+</head>
+<body>
+	<button>全选</button>
+	<button>取消</button>
+	<button>反选</button>
+
+	<ul>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+		<li><input type="checkbox"></li>
+	</ul>
+	<script type="text/javascript">
+		var arrBtn = document.getElementsByTagName("button");
+		var arrInp = document.getElementsByTagName("input");
+		fn(0,true);
+		fn(1,false);
+		function fn(val,flag) {
+			arrBtn[val].onclick = function () {
+			for(var i = 0; i < arrInp.length; i++){
+				arrInp[i].checked = flag;
+			}
+		  }
+		}
+		// arrBtn[0].onclick = function () {
+		// 	for(var i = 0; i < arrInp.length; i++){
+		// 		arrInp[i].checked = true;
+		// 	}
+		// }
+		// arrBtn[1].onclick = function () {
+		// 	for(var i = 0; i < arrInp.length; i++){
+		// 		arrInp[i].checked = false;
+		// 	}
+		// }
+
+		arrBtn[2].onclick = function () {
+			for(var i = 0; i < arrInp.length; i++){
+				// if(arrInp[i].checked) {
+				// 	arrInp[i].checked = false;
+				// } else {
+				// 	arrInp[i].checked = true;
+				// }
+				//or
+				// arrInp[i].checked = arrInp[i].checked == true? false:true;
+				//or
+				arrInp[i].checked = !arrInp[i].checked;
+			}
+		}
+	</script>
+</body>
+</html>

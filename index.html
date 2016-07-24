@@ -60,6 +60,22 @@
    				li5.className = "current";
    			}
 
+           //需求：用js生成精灵图的坐标
+           //技术点：document.getElementsByTagName();   在整个文档中找标签
+           //标签.getElementsByTagName(); 就是在这个标签下，在找里面的标签
+            //步骤：
+            //1.获取lifeserviceContentUl标签下所有的i标签。
+            //2.遍历所有i标签，然后让所有标签给定定位。
+
+
+            //1.获取lifeserviceContentUl标签下所有的i标签。
+            var lifeUl = document.getElementById("lifeserviceContentUl");
+            var arrI = lifeUl.getElementsByTagName("i");
+
+            //2.遍历所有i标签，然后让所有标签给定定位。
+            for(var i = 0; i<arrI.length;i++){
+                arrI[i].style.backgroundPosition = "0 -"+(25*i)+"px";
+            }
    		}
    	</script>
 </head>
@@ -376,7 +392,7 @@
 					<h3>生活服务</h3>
 				</div>
 				<div class="main-news-lifeservice-content">
-					 <ul>
+					 <ul id="lifeserviceContentUl">
                         <li>
                             <a href="#">
                                 话费

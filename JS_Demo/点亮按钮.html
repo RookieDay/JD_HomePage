@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AAA</title>
+	<style type="text/css">
+		body {
+			padding: 100px;
+		}
+		button {
+			margin: 10px;
+		}
+		.current {
+			background-color: pink;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var arrBtn = document.getElementsByTagName("button"); 
+			for(var i = 0; i <arrBtn.length; i++) {
+				arrBtn[i].onmouseover = function () {
+					 for(var j = 0; j < arrBtn.length;j++) {
+					 	arrBtn[j].className = "";
+					 } 
+					 this.className = "current";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<button>按钮1</button>
+	<button class="current">按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+</body>
+</html>
