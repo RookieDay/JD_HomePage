@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AAA</title>
+</head>
+<body>
+<div id="box">
+	<div>1</div>
+	<div>1</div>
+	<div>1</div>
+	<div>1</div>
+	<div>1</div>
+</div>
+
+<script type="text/javascript">
+	var box = document.getElementById("box");
+	var aaa = box.childNodes;
+
+	for(var i = 0; i <aaa.length;i++){
+		if(aaa[i].nodeType == 1)
+		console.log(aaa[i]);
+	}
+</script>
+</body>
+</html>

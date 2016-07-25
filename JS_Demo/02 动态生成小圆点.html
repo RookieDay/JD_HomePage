@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ul,ol{list-style:none}
+        .box {
+            width: 730px;
+            height: 454px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .circle {
+            position: absolute;
+            left: 50%;
+            /*margin-left:-50px;*/
+            /*C3写法，向左移动盒子自身的一半*/
+            transform: translate(-50%,0);
+            bottom:10px;
+        }
+        .circle span {
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: pink;
+            text-align: center;
+            line-height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+<div class="box" id="slide">
+    <div class="slider">
+        <ul>
+            <li><img src="images/11.jpg" alt=""/></li>
+            <li><img src="images/22.jpg" alt=""/></li>
+            <li><img src="images/33.jpg" alt=""/></li>
+            <li><img src="images/44.jpg" alt=""/></li>
+            <li><img src="images/55.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+            <li><img src="images/66.jpg" alt=""/></li>
+        </ul>
+    </div>
+    <div class="circle">
+        
+    </div>
+</div>
+
+<script>
+
+    //需求：slide盒子中有多少img（图片），在circle盒子中就有多少个span.
+    //步骤：
+    //1.获取slide下面的img的个数。
+    //2.创建span标签。然后赋值。
+    //3.添加到circle标签中。
+
+    //1.获取slide下面的img的个数。
+    var slide = document.getElementById("slide");
+    var arrImg = slide.getElementsByTagName("img");
+    //比较方便的写法获得一个标签的子节点。
+    var sc = slide.children[1];
+    //循环遍历图片数组获得个数
+    for(var i=0;i<arrImg.length;i++){
+        //2.创建span标签。然后赋值。
+        var newSpan = document.createElement("span");
+        newSpan.innerHTML = i+1;
+        //3.添加到circle标签中。
+        sc.appendChild(newSpan);
+    }
+
+
+</script>
+
+
+
+
+</body>
+</html>

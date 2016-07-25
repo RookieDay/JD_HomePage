@@ -958,11 +958,112 @@ DOM的节点并不是孤立的，因此可以通过DOM节点之间的相对关系对它们进行访问
 	总结：在IE678中用previousSibling，在火狐谷歌IE9+以后用previousElementSibling。
 	下一个兄弟节点=节点.previousElementSibling|| 节点.previousSibling
 
+单个子节点
+	firstChild：调用者是父节点。IE678中指第一个子元素节点（标签）。在火狐谷歌IE9+以后都指的是第一个节点（包括空文档和换行节点）。
+	firstElementChild:在火狐谷歌IE9都指的第一个元素节点。
+	第一个子节点=父节点.firstElementChild || 父节点.firstChild
+
+lastChild:调用者是父节点。IE678中指最后一个子元素节点（标签）。在火狐谷歌IE9+以后都指的是最后一个节点（包括空文档和换行节点）。
+lastElementChild：在火狐谷歌IE9都指的最后一个元素节点。
+
+所有子节点
+	childNodes：它是标准属性，它返回指定元素的子元素集合，包括HTML节点，所有属性，文本节点   （他还是W3C的亲儿子 ）
+	火狐 谷歌等高本版会把换行也看做是子节点
+	nodeType==1时才是元素节点(标签)
+		  nodeType  ==  1  表示的是元素节点   记住   元素就是标签
+		  nodeType  ==  2  表示是属性节点   了解
+		  nodeType  ==  3  是文本节点   了解
+	子节点数组 = 父节点.childNodes;   获取所有节点。
+	children：非标准属性，它返回指定元素的子元素集合。
+	但它只返回HTML节点，甚至不返回文本节点，虽然不是标准的DOM属性，但它和innerHTML方法一样，得到了几乎所有浏览器的支持。
+	children在IE6/7/8中包含注释节点 
+	在IE678中，注释节点不要写在里面。
+	子节点数组 = 父节点.children;   用的最多。
+知识补充
+	节点自己.parentNode.children[index];随意得到兄弟节点。
+
+	作为了解内容：
+	function siblings(elm) {
+			var a = [];
+			var p = elm.parentNode.children;
+			for(var i =0,pl= p.length;i<pl;i++) {
+				if(p[i] !== elm) a.push(p[i]);
+			}
+			return a;
+	}
+	定义一个函数。必须传递自己。定义一个数组，获得自己的父亲，在获得自己父亲的所有儿子（包括自己）。遍历所哟与的儿子，只要不是自己就放进数组中。
 
 
+	只需要明白两个属性（！！！重点！！！）
+	parentNode   和  children  这两个属性。
 
+52.DOM节点操作 （！！！！！重点！！！！！）
+节点的访问关系都是属性。节点的操作都是函数或者方法。
 
+创建节点
+	使用方法是这样的document.createElement();
+	新的标签（节点） = document.createElement(“标签名”);
+插入节点（使用节点）
+	使用方法： 父节点.appendChild();
+	父节点.appendChild(新节点); 父节点的最后插入一个新节点
 
+	使用方法：父节点.insertBefore(要插入的节点，参考节点)；
+	父节点.insertBefore(新节点,参考节点)在参考节点前插入;
+删除节点   
+	用法：用父节点删除子节点。
+	父节点.removeChild（子节点）；必须制定要删除的子节点
+	节点自己删除自己：
+	不知道父级的情况下，可以这么写：node.parentNode.removeChild(node)
+复制节点 （    oldNode.cloneNode（true）  ）
+	想要复制的节点调用这个函数cloneNode()，得到一个新节点。 方法内部可以传参，如果是true，深层复制，如果是false，只复制节点本身。
+	新节点=要复制的节点.cloneNode(参数) ; 参数可选复制节点
+	用于复制节点， 接受一个布尔值参数， true 表示深复制（复制节点及其所有子节点）， false 表示浅复制（复制节点本身，不复制子节点）
+节点属性
+	获取：getAttribute(名称)
+	设置：setAttribute(名称, 值)
+	删除：removeAttribute(名称)
+	注意：IE6、7不支持。
+	调用者：节点。   有参数。   没有返回值。
+	每一个方法意义不同。
+
+transform：translate(-50%,0);向左移动盒子自身的一半。
+
+53.日期对象
+推荐方法
+	1．var date1 = new Date(); 本地时间。
+	2．设定制定时间：（兼容最强）
+		var date2 = new Date("2016/01/27 12:00:00")
+不推荐的方法
+	var date3 = new Date('Wed Jan 27 2016 12:00:00 GMT+0800 (中国标准时间)');
+	var date4 = new Date(2016, 1, 27);
+获取日期和时间
+	getDate()                 获取日 1-31
+	getDay ()                 获取星期 0-6（0代表周日）
+	getMonth ()               获取月 0-11（1月从0开始）
+	getFullYear ()	           获取完整年份（浏览器都支持）
+	getHours ()	              获取小时 0-23
+	getMinutes ()	              获取分钟 0-59
+	getSeconds ()	              获取秒  0-59
+	getMilliseconds ()          获取毫秒 （1s = 1000ms）
+	getTime ()	              返回累计毫秒数(从1970/1/1午夜)
+返回距离1970/01/01毫秒数
+	1．var date = Date.now();
+	2．var date = +new Date();
+	3．var date = new Date().getTime();  最常用
+	4．var date = new Date().valueOf();
+
+定时器种类
+	1．setInterval()：间隔循环；  （像闹钟）（今天内容）
+			循环定时器（每隔固定的时间执行一次）
+	2．setTimeout()：定时一次；（像定时炸弹）
+循环定时器（setInterval()）定时器是一个函数
+	调用者：window。   有参数（一个函数，毫秒值（间隔时间））
+	有返回值。          间隔执行一个函数用的。
+	定时器的名字 = window.setInterval(函数名，毫秒值);
+定义方法
+	1．setInterval(fn,1000);   比较好理解，简单明了。不能执行带参函数。
+	2．setInterval("fn()",1000);  兼容性不好，self.setInterval("fn()",1000)
+	3．setInterval(function (){},1000);   用的最多（匿名函数法）
 
 
 
