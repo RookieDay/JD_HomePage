@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>AAA</title>
+	<style type="text/css">
+		.box {
+			width: 700px;
+			/*height: 500px;*/
+			padding: 10px;
+			margin: 50px auto;
+			border: 1px solid #ccc;
+		}
+		textarea {
+			outline-style: none;
+			width: 550px;
+			height: 400px;
+			resize: none;
+		}
+		ul {
+			width: 550px;
+			list-style: none;
+			margin: 5px auto;
+		}
+		li {
+			height: 30px;
+			margin-left: -35px;
+			border-bottom: 1px dashed #CCC;
+			font: 400 33px/30px "simsun";
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<label for="txt">Input:</label>
+	<textarea id="txt"></textarea>
+	<button id="btn">send</button>
+	<ul id="ul">
+<!-- 		<li>1</li>
+		<li>2</li>
+		<li>3</li> -->
+	</ul>
+</div>
+<script type="text/javascript">
+	//需求：点击发布按钮，自动生成li添加到ul中，让页面上显示出textarea的内容。
+    //步骤：
+    //1.获得事件源和ul标签
+    //2.绑定事件
+    //3.书写事件驱动程序
+        //(1).获取textarea里面的内容
+        //(2).创建一个li节点
+        //(3).把textarea的值值赋给li的innerHTML属性。
+        //(4).把新生成的li标签，放到ul中。
+
+
+    //1.获得事件源和ul标签和textarea标签
+    var txt = document.getElementById("txt");
+    var btn = document.getElementById("btn");
+    var ul = document.getElementById("ul");
+    //2.绑定事件
+    btn.onclick = function () {
+        //3.书写事件驱动程序
+            //(1).判断如果textarea的值不为空就执行如下代码
+        if(txt.value != ""){
+                //(2).创建一个li节点
+            var newLi = document.createElement("li");
+                //(3).把textarea的值值赋给li的innerHTML属性。
+            newLi.innerHTML = txt.value;
+                //(4).把新生成的li标签，放到ul中。
+            ul.appendChild(newLi);
+
+            //清空textarea的value值
+            txt.value = "";
+        }else{
+            alert("请输入内容！不能为空！");
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

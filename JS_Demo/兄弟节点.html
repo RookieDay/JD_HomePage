@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
+	<meta charset="utf-8">
 	<title>AAA</title>
+	<style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+        }
+        .red {
+            background-color: RED;
+        }
+        .blue {
+            background-color: blue;
+        }
+        #box {
+            background-color: yellow;
+        }
+	</style>
 </head>
 <body>
 <div class="box"></div>
 <div class="box"></div>
-<div class="box" id ="box"></div>
+<div class="box" id="box"></div><div></div>
 <div class="box"></div>
+<script type="text/javascript">
+	 //需求：改变id为box的盒子的下一个兄弟盒子的背景色为red.
+    //1.获取id为box的盒子
+    //2.获取他的下一个兄弟节点
+    //3.给他加类名red
+
+    //1.获取id为box的盒子
+    var box = document.getElementById("box");
+    //2.获取他的下一个兄弟节点
+//    var aaa = box.nextSibling;
+//    console.log(aaa);
+//    var aaa = box.nextElementSibling;
+    var aaa = box.nextElementSibling || box.nextSibling;
+    //3.给他加类名red
+    aaa.className += " red";
+
+    var bbb = box.previousElementSibling || box.previousSibling;
+    bbb.className = "blue";
+</script>
 </body>
 </html>

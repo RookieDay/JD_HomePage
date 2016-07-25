@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 700px;
+            padding: 10px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+        }
+        textarea {
+            outline-style: none;
+            width: 550px;
+            height: 400px;
+            resize: none;
+        }
+        ul {
+            width: 550px;
+            list-style: none;
+            margin: 5px auto;
+        }
+        li {
+            height: 30px;
+            margin-left: -40px;
+            border-bottom: 1px dashed #ccc;
+            font: 400 22px/30px "simsun";
+        }
+        li a {
+        	float: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <label for="txt">请输入：</label>
+    <textarea id="txt" cols="30" rows="10"></textarea>
+    <button id="btn">发布</button>
+    <ul id="ul">
+
+    </ul>
+
+</div>
+
+<script type="text/javascript">
+	//需求：点击发布按钮，自动生成li添加到ul中，让页面上显示出textarea的内容。
+    //步骤：
+    //1.获得事件源和ul标签
+    //2.绑定事件
+    //3.书写事件驱动程序
+        //(1).获取textarea里面的内容
+        //(2).创建一个li节点
+        //(3).把textarea的值值赋给li的innerHTML属性。
+        //(4).把新生成的li标签，放到ul中。
+
+
+    //1.获得事件源和ul标签和textarea标签
+    var txt = document.getElementById("txt");
+    var btn = document.getElementById("btn");
+    var ul = document.getElementById("ul");
+    //2.绑定事件
+    btn.onclick = function () {
+        //3.书写事件驱动程序
+            //(1).判断如果textarea的值不为空就执行如下代码
+        if(txt.value == ""){
+        	alert("请输入内容！不能为空！");
+        	return;
+        }	
+            //(2).创建一个li节点
+        var newLi = document.createElement("li");
+            //(3).把textarea的值值赋给li的innerHTML属性。
+        newLi.innerHTML = txt.value + "<a href='javascript:;'>Delete</a>";
+            //(4).把新生成的li标签，放到ul中。
+        // ul.appendChild(newLi);
+
+        // if(ul.children.length == 0) {
+        // 	ul.appendChild(newLi);
+        // } else {
+        // 	// ul.insertBefore(newLi, ul.firstElementChild || ul.firstChild);
+        // 	ul.insertBefore(newLi, ul.children[0]);
+        // }
+        if(ul.children[0] == undefined) {
+        	ul.children[0] = null;
+        }
+        ul.insertBefore(newLi, ul.children[0]);
+        //清空textarea的value值
+        txt.value = "";
+     	//
+     	var arrUlA = ul.getElementsByTagName("a")
+   		for (var i = 0; i < arrUlA.length; i++) {
+    		arrUlA[i].onclick = function () {
+    		ul.removeChild(this.parentNode);
+    	}
+    }
+    }
+
+</script>
+
+
+</body>
+</html>
