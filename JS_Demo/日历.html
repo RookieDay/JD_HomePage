@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 200px;
+            height: 300px;
+            background-color: #ffe011;
+            margin: 100px auto;
+            text-align: center;
+            /*color: #fff;*/
+        }
+        .box1 {
+            height: 100px;
+            font: 400 15px/100px "simsun";
+        }
+        .box2 {
+            width: 100px;
+            height: 150px;
+            background-color: #37ff1a;
+            font: 700 60px/150px "simsun";
+            margin: 25px auto;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            //需求：模拟一个电子日历。
+            //需求：
+            //1.获取当前时间。
+            //2.获取当前的年月日星期。
+            //3.赋值给相应的盒子。
+
+            //1.获取当前时间和相应的盒子。
+            var now = new Date();
+            var box = document.getElementById("box");
+            var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+            //2.获取当前的年月日星期。
+            var d = now.getDate();
+            var m = now.getMonth();
+            var y = now.getFullYear();
+            var xingqi = now.getDay();
+            //3.赋值给相应的盒子。
+            box.children[0].innerHTML = y+"年"+(m+1)+"月"+d+"日 "+arr[xingqi];
+            box.children[1].innerHTML = d;
+
+        }
+
+    </script>
+
+
+
+</head>
+<body>
+
+    <div class="box" id="box">
+        <div class="box1">2015年12月17日 星期三</div>
+        <div class="box2">87</div>
+    </div>
+
+</body>
+</html>
