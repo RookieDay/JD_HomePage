@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+ 	<meta charset="utf-8">
+	<title>AAA</title>
+	<style type="text/css">
+		.clock {
+			width: 600px;
+			height: 600px;
+			margin: 30px auto;
+			background: url(images/clock.jpg) no-repeat;
+			position: relative;
+		}
+		.clock div {
+			width: 600px;
+			height: 600px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: url(images/hour.png) no-repeat center center;
+		}
+		#m {
+			background: url(images/minute.png) no-repeat center center;
+		}
+		#s {
+			background: url(images/second.png) no-repeat center center;
+		}		
+	</style>
+</head>
+<body>
+<div class="clock" id="clock">
+	<div id="h"></div>
+	<div id="m"></div>
+	<div id="s"></div>
+</div>
+
+<script type="text/javascript">
+	var hh = document.getElementById("h");
+	var mm = document.getElementById("m");
+	var ss = document.getElementById("s");
+	setInterval(function () {
+		var now = new Date();
+		var ms = now.getMilliseconds();
+		var s = now.getSeconds()+ ms/1000;
+		var m = now.getMinutes() + s/60;
+		var h = now.getHours()%12 + m/60;
+		ss.style.webkitTransform = "rotate("+s*6+"deg)";	 
+		mm.style.webkitTransform = "rotate("+m*6+"deg)";	 
+		hh.style.webkitTransform = "rotate("+h*30+"deg)";	 
+	}, 1);
+</script>
+</body>
+</html>

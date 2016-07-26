@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 900px;
+            margin: 200px auto;
+            color: red;
+            font: 700 50px "simsun";
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box" id="box">距离放假还有4天3小时9分钟43秒！</div>
+
+    <script>
+        // 目标时间：2016/01/31 18:00:00
+        //需求：距离放假时间倒计时！
+        //步骤：
+        //0.定义一个计时器。定义一个函数。每一秒执行一次这个函数。
+        //1.获得两个对象，现在的日期对象，一个是目标时间的日期对象。
+        //2.获得他们距离1970年1月1日的毫秒值。然后相减。（获得了一个毫秒的差值）
+        //3.把毫秒差值转换成秒。（获得了一个距离目标时间的总秒数）
+        //4.在把总秒数，转换成天时分秒。
+        //5.在页面上显示出来。
+
+        var box = document.getElementById("box");
+        //0.定义一个计时器。定义一个函数。每一秒执行一次这个函数。
+        setInterval(fn,1000);
+        function fn(){
+            //1.获得两个对象，现在的日期对象，一个是目标时间的日期对象。
+            var nowTime = new Date();
+            var newTime = new Date("2017/01/31 18:00:00");
+            //console.log(nowTime);
+            //console.log(newTime);
+            //2.获得他们距离1970年1月1日的毫秒值。然后相减。（获得了一个毫秒的差值）
+            var ms = newTime.getTime()-nowTime.getTime();
+            //3.把毫秒差值转换成秒。（获得了一个距离目标时间的总秒数）
+            var ss = parseInt(ms/1000);
+    //        console.log(ss);
+            //4.在把总秒数，转换成天时分秒。
+            var s = ss%60;
+            var m = parseInt(ss/60%60);
+            var h = parseInt(ss/60/60%24);
+            var d = parseInt(ss/60/60/24);
+            //当值为一位数的时候，数值前加0。
+//            if(s<10){
+//                s = "0"+s;
+//            }
+//            if(m<10){
+//                m = "0"+m;
+//            }
+//            if(h<10){
+//                h = "0"+h;
+//            }
+//            if(d<10){
+//                d = "0"+d;
+//            }
+
+            //三元运算符
+            s = s<10? "0"+s:s;
+            m = m<10? "0"+m:m;
+            h = h<10? "0"+h:h;
+            d = d<10? "0"+d:d;
+
+//            function aaa(bbb){
+////            if(s<10){
+////                s = "0"+s;
+////            }
+//                return bbb<10? "0"+bbb:bbb;
+//            }
+//            s=aaa(s);
+//            m=aaa(m);
+//            h=aaa(h);
+//            d=aaa(d);
+            //5.在页面上显示出来。
+            box.innerHTML = "距离放假还有"+d+"天"+h+"小时"+m+"分钟"+s+"秒！";
+        }
+    </script>
+
+</body>
+</html>

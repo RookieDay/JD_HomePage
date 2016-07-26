@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .clock {
+            width: 600px;
+            height: 600px;
+            margin: 30px auto;
+            background: url(images/clock.jpg) no-repeat;
+            position: relative;
+        }
+        .clock div {
+            width: 600px;
+            height: 600px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url(images/hour.png) no-repeat center;
+        }
+        #m {
+            background-image: url(images/minute.png);
+        }
+        #s {
+            background-image: url(images/second.png);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="clock" id="clock">
+        <div id="h"></div>
+        <div id="m"></div>
+        <div id="s"></div>
+    </div>
+
+    <script>
+        //需求：随着时间的变化，时分秒针跟着旋转。
+                //技术点1：随着时间的变化，盒子跟着旋转。
+                //技术点2：旋转盒子：C3  :   盒子.style.webkitTransform: rotate(45deg);
+        //步骤：
+        //0.得到时分秒的盒子。
+        //1.定义一个定时器。定义一个方法，然后每秒钟执行一次。
+        //2.获取当前date对象。
+        //3.从date中获得时分秒。
+        //4.根据时分秒的值旋转相应的盒子。
+
+
+        //0.得到时分秒的盒子。
+        var hh = document.getElementById("h");
+        var mm = document.getElementById("m");
+        var ss = document.getElementById("s");
+        //1.定义一个定时器。定义一个方法，然后每秒钟执行一次。
+
+        setInterval(aaa,1);
+        function aaa(){
+            //2.获取当前date对象。
+            var now = new Date();
+
+            //3.从date中获得时分秒。
+            var ms = now.getMilliseconds();
+            var s = now.getSeconds()+ms/1000;  //取出的秒0-59
+            var m = now.getMinutes()+s/60;     //取出的分0-59
+            var h = now.getHours()%12+m/60;    //取出的小时0-23
+            //4.根据时分秒的值旋转相应的盒子。
+            ss.style.webkitTransform = "rotate("+s*6+"deg)";
+            mm.style.webkitTransform = "rotate("+m*6+"deg)";
+            hh.style.webkitTransform = "rotate("+h*30+"deg)";
+
+            //兼容火狐
+            ss.style.MozTransform = "rotate("+s*6+"deg)";
+            mm.style.MozTransform = "rotate("+m*6+"deg)";
+            hh.style.MozTransform = "rotate("+h*30+"deg)";
+        }
+
+    </script>
+
+</body>
+</html>
