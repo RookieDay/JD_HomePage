@@ -1206,6 +1206,9 @@ arguments.callee == 所在的函数体。 == 调用函数名。(和this类似)
 	clearInterval(定时器名)   （被清除后，不在循环执行）
 	clearTimeout(定时器名)   （被清除后，如果时间没到，不执行定时器了）
 
+1、技术点：window.location.href = “http://www.itcast.cn”;
+2、递归。（函数自己调用自己，就叫做递归。）
+       递归必须有跳出跳跃，要不然会出现死循环。（必须配备跳出条件）
 
 
 
