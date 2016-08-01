@@ -1211,4 +1211,163 @@ arguments.callee == 所在的函数体。 == 调用函数名。(和this类似)
        递归必须有跳出跳跃，要不然会出现死循环。（必须配备跳出条件）
 
 
+57.
+基本类型 number, string, boolean
+复合类型:
+// Array, Date, Number, String, Boolean, Object
+// RegExp, Math, Function
 
+
+//			// in
+//			// 语法:   boolen "name" in Object
+			var o = { name: "jim" };
+			var s1 = "age";
+			var s2 = "name";
+			console.log(s1 in o);
+			console.log(s2 in o);
+//			// 判断对象有某属性成员还可以怎么处理?
+//			if ( s1 in o ) {}
+//			
+//			var has = false;
+//			for ( var k in o ) {
+//				if ( k == s1 ) {
+//					has = true;
+//					break;
+//				}
+//			}
+//			// 对象就是键值对的集合
+//			
+//			// 浏览器能力检查的代码
+//			if ( document.getElementsByClassName ) {
+//				// 有该方法
+//			} else {
+//				// 没有该方法
+//			}
+//			
+//			if ( o.age ) {
+//				
+//			}
+//			// 
+//			var s3 = "age";
+//			// 如果希望使用 s3 来判断 对象 o 是否有 该属性
+//			if ( o[ s3 ] ) {	// 关联数组
+//				
+//			}
+
+			// 创建对象可以使用 new 与 直接量( 字面量  )
+			
+			// 重要: 值类型与引用类型
+			// 按值传递: 将变量中的数据完整的拷贝一份, 赋值给新的变量
+//			var num = 123;
+//			var num2 = num;
+//			// 此时内存中有两个 123 的副本
+//			console.log("num = " + num + ", num2 = " + num2);
+//			num = 1;
+//			console.log("num = " + num + ", num2 = " + num2);
+//			
+//			
+//			// 引用类型表示变量存储的是数据的地址( 引用 )
+//			var o = { n: 123 };
+//			var o2 = o;
+			// 内存中只有一个数据对象, 是将 o 中地址复制一份, 赋值给 o2
+			// 即 o2 和 o 同时指向数据
+			// 
+//			console.log("o.n = " + o.n + ", o2.n = " + o2.n);
+//			o.n = 1;
+//			console.log("o.n = " + o.n + ", o2.n = " + o2.n);
+
+
+				num = num || "没有参数";
+				console.log( num );
+				// 真 && ...
+				
+				// ||
+				// 如果第一个为真 就返回第一个表达式, 如果为假 则返回第二个表达式
+				// &&
+				// 如果第一个为假 就返回第一个表达式, 如果为真则返回第二个表达式
+				
+				// 表达式1 && 表达式2 && 表达式1
+				// 
+				// 先验证是否满足 表达式1 如果满足 就执行表达式2 的验证
+				// 验证如果失败返回 假
+				// 验证如果成功返回 表达式1
+				
+// delete 删除
+			// 语法:  boolean  delete 数据;
+			// 在当前作用域上删除数据
+			
+			// 用法:
+			// 1, 删除数组中的一个元素
+			// 2, 删除一个对象的属性或方法
+			// 3, 删除一个没有用 var 声明 变量
+			
+			/*
+			var arr = [ 1, 2, 3, 4 ];
+			console.log( arr );
+			console.log( arr.length )
+			var isTrue = delete arr[ 2 ];
+			console.log( arr );
+			console.log( arr.length )
+			*/
+			
+		
+//			var o = { name: "jim" };
+//			var isTrue = delete o.name;  // o[ "name" ]
+//			console.log(o.name);
+//			console.log(isTrue);
+//		
+//			
+//			var n = 1;
+//				m = 2;
+//			var isTrue1 = delete n;
+//			var isTrue2 = delete m;
+//			
+//			console.log( isTrue1 );		// => false 
+//			console.log( isTrue2 );     // => true
+//			
+//			console.log( n );			// => 1
+//			console.log( m );			// => undefined				
+
+
+
+			// 函数的创建
+			/*
+			// 1, 声明式 函数
+			func();
+			function func() {     声明式函数  浏览器加载的时候会把这些声明全部加载到前面 提前加载，所以这里的func();可以写在前面
+				console.log( 123 );	
+			}                            这之后没有分号 他是全局的
+			// js 执行: 预解析, 一句一句执行
+			
+			// 2, 函数的字面量( 直接量, Lambda 表达式 )
+			fn();				加载的时候会把var提前，因为现在fn没有值，是undefined， 所以这个时候的执行结果就是 fn not a function
+								如果去掉var，加载到内存 fn 不存在 ， 这样的执行结果会是fn not defined
+			var fn = function () {
+				
+			};
+			// 此时函数作为 表达式 存在
+			// 凡是将数据 和 运算符等联系起来有值的式子就是表达式
+			// 1, 1+2, new Date(), function () {}
+			
+			// 3, new Function
+
+
+ 声明式函数不允许出现在表达式中
+			
+/*			if ( true ) {
+				console.log(1);
+				function f() {  				//浏览器执行这的时候看都不看他 ， 他已经提前加载到前面去了  忽略了 忽略声明 不执行
+					console.log( 123 );
+				}
+				console.log(2);
+			}
+			f();
+			*/
+//			
+//			func();
+//			var f = function func() {   函数声明转化为了函数表达式
+//				
+//			};
+
+
+58 面向对象
