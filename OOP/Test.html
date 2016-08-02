@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AAA</title>
+	<script type="text/javascript">
+		function Fn1(name) {
+			this.name = name;
+			this.sayHello = function () {
+				 console.log('123'); 
+			}	
+		}
+		Fn1.prototype.sayHello = function(){
+			 console.log("aaaa"); 
+		};
+		var p1 = new Fn1("AA");
+		var p2 = new Fn1("BB");
+		console.log(p1.sayHello === p2.sayHello)
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
