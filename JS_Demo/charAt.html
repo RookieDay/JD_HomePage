@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    var str = "I love my country!我爱你中国！"
+
+    //需求：获取字符串所占位置的长度。
+            //难点：如何区分中文还是英文。 利用ASCIII：编码值在0-127是英文。
+    //步骤：
+    //1.获取每一个位置上的字符。
+    //2.判断，如果是英文，占一个位置。
+    //3.如果是中文占两个位置。
+    //4.返回字符所占位置的长度。
+
+    //定义一个计数器。
+    var  len = 0 ;
+    //1.获取每一个位置上的字符。
+    for(var i=0;i<str.length;i++){
+        //2.判断，如果是英文，占一个位置。
+        if(str.charCodeAt(i) >-1 && str.charCodeAt(i) < 128){
+            len++;
+        }else{
+        //3.如果是中文占两个位置。
+            len+=2;
+        }
+    }
+
+    //4.返回字符所占位置的长度。
+    alert(len);
+</script>
+</body>
+</html>

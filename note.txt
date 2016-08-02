@@ -1105,6 +1105,370 @@ transform：translate(-50%,0);向左移动盒子自身的一半。
 		d、如果没有0。取值取前面那个。    1 && 2； 值为1。
 
 
+55.String
+字符串转换
+	1．字符串 = 变量+“”;
+	2．字符串 = String(变量)；
+	3．字符串 = 变量.toString()；  (任何简单类型)    
+	注意：
+				Number类型：
+	该进制值 = 十进制.toString（进制）
+	十进制值 = window.parseInt(数值，进制);
+		  区别于：String类型中的toString()
+给索引查字符
+	在一个字符串中，给定他的索引，查找（返回）对应的字符。
+charAt，获取相应位置字符（参数： 字符位置）
+	返回的字符 = str.charAt(索引)。获得索引处的字符。
+	注释：字符串中第一个字符的下标是 0。如果参数 index 不在 0 与 string.length 之间，该方法将返回一个空字符串。
+
+charCodeAt获取相应位置字符编码（参数： 字符位置）
+	编码值 = str.charCodeAt(索引);指定位置的字符对应的编码值
+charAt()方法和charCodeAt()方法用于选取字符串中某一位置上的单个字符
+	区别：charCodeAt()方法，它并不返回指定位置上的字符本身，而是返回该字符在Unicode字符集中的编码值
+给字符查索引
+	从后往前找，找到这个字符后，还是从前往后找他的索引值。
+indexOf，从前向后索引字符串位置（参数： 索引字符串）
+	索引值 = str.indexOf(字符); 从前往后查找。
+	从前面寻找第一个符合元素的位置。有多个返回值为第一个。
+lastIndexOf，从后向前索引字符串位置（参数：索引字符串）
+	索引值 = str.lastIndexOf(字符); 从后往前查找。
+	从后面寻找第一个符合元素的位置
+	找不到则返回 -1
+编码和解码
+URI (Uniform ResourceIdentifiers,通用资源标识符)进行编码，以便发送给浏览器。有效的URI中不能包含某些字符，
+例如空格。而这URI编码方法就可以对URI进行编码，它们用特殊的UTF-8编码替换所有无效的字符，从而让浏览器能够接受和理解。
+
+	encodeURIComponent() 函数可把字符串作为 URI 组件进行编码
+	decodeURIComponent() 函数可把字符串作为 URI 组件进行解码
+	var url = "http://www.itcast.cn?name=supperBrother&password=shuai";
+	//编码：将非标准字符全部编码
+	var enUrl = encodeURIComponent(url);//encodeURI(url); 
+	//解码：转换为原始形式
+	var deUrl = decodeURIComponent(enUrl);//decodeURI(enUrl);
+
+字符串操作
+concat，连接字符串（参数： 追加字符串，可以多个）
+	返回一个字符串 = str1.concat(str2); 把str1和str2链接起来
+slice，截取字符串（参数：1，截取位置【必须】，2终结点）
+	字符串 = str.slice（参数1，参数2); 两个参数都是索引值。
+	(1).（2,5）  正常包左不包右。
+	(2).  ( 2 )   从指定的索引位置剪到最后。
+	(3).（-3）   从倒数第几个剪到最后.
+	(4).（5,2）  前面的大，后面的小，空。
+
+substr，截取字符串（参数：1，截取位置【必须】，2截取长度）
+	字符串 = str.substr（参数1，参数2); 1索引值,2长度。
+		第一个参数为从索引位置取值，第二个参数返回字符长度。
+	(1).  （2,4）    从索引值为2的字符开始，截取4个字符。
+	(2).  （1）     一个值，从指定位置到最后。
+	(3).  （-3）    从倒数第几个剪到最后.
+              （4）不包括前大后小的情况。
+substring 同slice
+	字符串 = str.substring（参数1，参数2); 两个参数都是索引值。
+	  不同1：参数智能调转位置。
+	  不同2：参数负值，将全部获取字符串。
+	   （1）.（2,5）   正常包左不包右。
+	(2).   ( 2 )    从指定的索引位置剪到最后。
+	(3).  （-3）   获取全部字符串.
+	(4).  （5,2）   前面的大，后面的小，不是空。（2,5）
+
+
+
+转换大小写
+	toUpperCase，转换为大写（参数： 无）
+	STR = str.toUpperCase(); 转换成大写
+	toLowerCase，转换为小写（参数：无）
+	str = STR.toLowerCase(); 转换成小写
+
+Number和Math
+ Number
+	number.toFixed(几位);四舍五入保留
+Math
+	Math.random();   (0-1随机数值)
+	Math.round();      (四舍五入取整)
+	Math.max();        (最大值和NaN)
+	Math.max(1,3,"12ab")；Math.max(1,2,NaN)；Math.max(1,2,undefined);  NaN
+	Math.max(1,3,"12")；Math.max(1,3,null)；    12  3
+	Math.max(1,2,3);    3
+
+56.setTimeout(函数名，毫秒值)：定时只执行一次；
+arguments.callee == 函数名==函数体（不是执行这个函数）
+arguments.length == 实参的长度。
+arguments == 实参数组。 
+arguments.callee == 所在的函数体。 == 调用函数名。(和this类似)
+
+定时器补充
+	定时器是有返回值的。返回值为定时器名。
+	 var  name1 =  setInterval(fn,1000); 
+	 var  name2 =  setTimeout(fn,1000); 
+	（定时器数据类型为：对象（复杂类型））
+清除定时器:(要用定时器，先清定时器)
+	clearInterval(定时器名)   （被清除后，不在循环执行）
+	clearTimeout(定时器名)   （被清除后，如果时间没到，不执行定时器了）
+
+1、技术点：window.location.href = “http://www.itcast.cn”;
+2、递归。（函数自己调用自己，就叫做递归。）
+       递归必须有跳出跳跃，要不然会出现死循环。（必须配备跳出条件）
+
+
+57.
+基本类型 number, string, boolean
+复合类型:
+// Array, Date, Number, String, Boolean, Object
+// RegExp, Math, Function
+
+
+//			// in
+//			// 语法:   boolen "name" in Object
+			var o = { name: "jim" };
+			var s1 = "age";
+			var s2 = "name";
+			console.log(s1 in o);
+			console.log(s2 in o);
+//			// 判断对象有某属性成员还可以怎么处理?
+//			if ( s1 in o ) {}
+//			
+//			var has = false;
+//			for ( var k in o ) {
+//				if ( k == s1 ) {
+//					has = true;
+//					break;
+//				}
+//			}
+//			// 对象就是键值对的集合
+//			
+//			// 浏览器能力检查的代码
+//			if ( document.getElementsByClassName ) {
+//				// 有该方法
+//			} else {
+//				// 没有该方法
+//			}
+//			
+//			if ( o.age ) {
+//				
+//			}
+//			// 
+//			var s3 = "age";
+//			// 如果希望使用 s3 来判断 对象 o 是否有 该属性
+//			if ( o[ s3 ] ) {	// 关联数组
+//				
+//			}
+
+			// 创建对象可以使用 new 与 直接量( 字面量  )
+			
+			// 重要: 值类型与引用类型
+			// 按值传递: 将变量中的数据完整的拷贝一份, 赋值给新的变量
+//			var num = 123;
+//			var num2 = num;
+//			// 此时内存中有两个 123 的副本
+//			console.log("num = " + num + ", num2 = " + num2);
+//			num = 1;
+//			console.log("num = " + num + ", num2 = " + num2);
+//			
+//			
+//			// 引用类型表示变量存储的是数据的地址( 引用 )
+//			var o = { n: 123 };
+//			var o2 = o;
+			// 内存中只有一个数据对象, 是将 o 中地址复制一份, 赋值给 o2
+			// 即 o2 和 o 同时指向数据
+			// 
+//			console.log("o.n = " + o.n + ", o2.n = " + o2.n);
+//			o.n = 1;
+//			console.log("o.n = " + o.n + ", o2.n = " + o2.n);
+
+
+				num = num || "没有参数";
+				console.log( num );
+				// 真 && ...
+				
+				// ||
+				// 如果第一个为真 就返回第一个表达式, 如果为假 则返回第二个表达式
+				// &&
+				// 如果第一个为假 就返回第一个表达式, 如果为真则返回第二个表达式
+				
+				// 表达式1 && 表达式2 && 表达式1
+				// 
+				// 先验证是否满足 表达式1 如果满足 就执行表达式2 的验证
+				// 验证如果失败返回 假
+				// 验证如果成功返回 表达式1
+				
+// delete 删除
+			// 语法:  boolean  delete 数据;
+			// 在当前作用域上删除数据
+			
+			// 用法:
+			// 1, 删除数组中的一个元素
+			// 2, 删除一个对象的属性或方法
+			// 3, 删除一个没有用 var 声明 变量
+			
+			/*
+			var arr = [ 1, 2, 3, 4 ];
+			console.log( arr );
+			console.log( arr.length )
+			var isTrue = delete arr[ 2 ];
+			console.log( arr );
+			console.log( arr.length )
+			*/
+			
+		
+//			var o = { name: "jim" };
+//			var isTrue = delete o.name;  // o[ "name" ]
+//			console.log(o.name);
+//			console.log(isTrue);
+//		
+//			
+//			var n = 1;
+//				m = 2;
+//			var isTrue1 = delete n;
+//			var isTrue2 = delete m;
+//			
+//			console.log( isTrue1 );		// => false 
+//			console.log( isTrue2 );     // => true
+//			
+//			console.log( n );			// => 1
+//			console.log( m );			// => undefined				
+
+
+
+			// 函数的创建
+			/*
+			// 1, 声明式 函数
+			func();
+			function func() {     声明式函数  浏览器加载的时候会把这些声明全部加载到前面 提前加载，所以这里的func();可以写在前面
+				console.log( 123 );	
+			}                            这之后没有分号 他是全局的
+			// js 执行: 预解析, 一句一句执行
+			
+			// 2, 函数的字面量( 直接量, Lambda 表达式 )
+			fn();				加载的时候会把var提前，因为现在fn没有值，是undefined， 所以这个时候的执行结果就是 fn not a function
+								如果去掉var，加载到内存 fn 不存在 ， 这样的执行结果会是fn not defined
+			var fn = function () {
+				
+			};
+			// 此时函数作为 表达式 存在
+			// 凡是将数据 和 运算符等联系起来有值的式子就是表达式
+			// 1, 1+2, new Date(), function () {}
+			
+			// 3, new Function
+
+
+ 声明式函数不允许出现在表达式中
+			
+/*			if ( true ) {
+				console.log(1);
+				function f() {  				//浏览器执行这的时候看都不看他 ， 他已经提前加载到前面去了  忽略了 忽略声明 不执行
+					console.log( 123 );
+				}
+				console.log(2);
+			}
+			f();
+			*/
+//			
+//			func();
+//			var f = function func() {   函数声明转化为了函数表达式
+//				
+//			};
+
+
+58 面向对象
+
+			// 写一个学生 Student, 要求有 姓名性别年龄和课程分数(语文, 数学, 英语)
+			// 和说话的方法	
+//			var Student = {
+//				
+//			};
+
+			/*
+			var Student = function ( name, age, gender, math, chinese, english ) {
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+				this.math = math;
+				this.chinese = chinese;
+				this.english = english;
+				this.sayHello = function () {
+					alert( this.name );
+				};
+			};
+			var stu1 = new Student( '李四', 18, '男', 90, 95, 80 );
+			
+			stu1.sayHello();
+			*/
+			
+			
+			
+			
+			// 学员的改良版本  scores是一个Json对象
+			var Student = function ( name, scores ) {
+				this.name = name;
+				this.scores = scores;
+				
+				// this.math = scores.math;
+				
+				this.sayHello = function () {
+					
+					alert ( "你好, 我是 " + this.name +
+							", 我考试的分数分别是: 数学 = " + this.scores.math + 
+							", 语文 = " + this.scores.chinese + 
+							", 英语 = " + this.scores.english );
+				};
+			}
+			
+			var stu2 = new Student( '张三', {
+				math: 90,
+				english: 80,
+				chinese: 85
+			} );
+			
+			stu2.sayHello();
+			
+// 对象中有一个属性 叫 __proto__
+			// 通过调试可以发现 对象的 __proto__ 与创建它的构造函数的 prototype 是有一个东西
+			
+			function F() {}
+			var o = new F();
+			
+			console.log( o.__proto__ === F.prototype );
+			
+			// __proto__ 是非标准属性
+			
+			// 原型
+			
+			// F.prototype			原型属性
+			// o.__proto__			原型对象
+			
+			// F.prototype 是构造函数 F 的原型属性
+			// F.prototype 是对象 o 的原型对象
+			
+			// 在访问一个对象的属性的时候, 首先在当前对象中找, 如果没有在其原型对象中找
+			
+			
+			var fn1 = function () {};
+			var fn2 = function () {};
+			
+			var f1 = new fn1();
+			
+			// fn1.prototype 是 f1 的原型对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
