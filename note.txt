@@ -1453,7 +1453,43 @@ arguments.callee == 所在的函数体。 == 调用函数名。(和this类似)
 
 
 
-
+/			function Fn( name ) {
+//				this.name = name;
+//				this.sayHello = function () {
+//					
+//					console.log( 'hahh ' );
+//				};
+//			}
+//			
+//			var o1 = new Fn('jim');
+//			var o2 = new Fn('tom');
+			// 假定 所有的成员都占 4 个字节
+			// 创建一个对象		8
+			//	 10			80
+			// 方法是共享了
+			//	 10			44
+			
+			
+			
+			// 重要
+			// 在函数里面有一个属性叫 prototype 
+			// 由 该函数创建的对象 会默认的链接到 该属性上
+			
+			function Fn() {
+			}
+			Fn.prototype.num = 123;
+			
+			var f = new Fn();
+			// f.age = 12;
+			f.num = 1;
+			
+			alert (f.num);
+			// 在访问对象的某一个属性 (方法)的时候. 首先会在当前对象中查找有没有改属性
+			// 如果当前对象没有, 就会在构造方法的定义规则中查找(当前对象)
+			// 如果没有, 就会到与对象联系起来的 构造函数的 prototype 属性中找
+			
+			
+			
 
 
 
