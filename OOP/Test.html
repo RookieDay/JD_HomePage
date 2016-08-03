@@ -3,19 +3,51 @@
 <head>
 	<title>AAA</title>
 	<script type="text/javascript">
-		function Fn1(name) {
-			this.name = name;
-			this.sayHello = function () {
-				 console.log('123'); 
-			}	
-		}
-		Fn1.prototype.sayHello = function(){
-			 console.log("aaaa"); 
-		};
-		var p1 = new Fn1("AA");
-		var p2 = new Fn1("BB");
-		console.log(p1.sayHello === p2.sayHello)
+		// function Fn1(name) {
+		// 	this.name = name;
+		// 	this.sayHello = function () {
+		// 		 console.log('123'); 
+		// 	}	
+		// }
+		// Fn1.prototype.sayHello = function(){
+		// 	 console.log("aaaa"); 
+		// };
+		// var p1 = new Fn1("AA");
+		// var p2 = new Fn1("BB");
+		// console.log(p1.sayHello === p2.sayHello)
+		// function Fn() {
+			  
+		// }
+		// var o = new Fn();
+		// console.log(o.constructor)
 
+
+		// var Person = function () {
+			  
+		// };
+
+		function Person() {
+			 /* body... */ 
+		}
+
+		var p = new Person();
+
+		var ctr = p.constructor;
+		var s = "" + ctr ;
+		alert(s);
+
+		var start =	s.replace("function", '|').indexOf('|');
+		if(start != -1){
+			var end = s.replace("function", '|').indexOf('(');
+			if(end != -1){
+				var name = s.replace("function", "|").slice(start + 2,end);
+				alert("|" + name);
+			}
+		}
+
+		var r = /function (.+)\(/;
+		var name = r.exec(s)[1];
+		alert("|" + name)
 	</script>
 </head>
 <body>

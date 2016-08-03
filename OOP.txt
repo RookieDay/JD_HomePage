@@ -62,4 +62,131 @@
 			// setTimeout 多少秒后执行 1 次
 			// setInterval 多少秒后 执行, 间隔 该描述再次执行, 直到 clearInterval
 			
+
+2.			
+var Student=function (name,age,sex,a,b,c) {
+    this.name=name;
+    this.age=age;
+    this.sex=sex;
+    this.lesson={chinese: a,math: b,english: c};
+    this.sayhello=function () {
+        console.log();
+    }
+}
+var p=new Student("aaa",18,"boy",100,100,100);
+
+var p3=new Student();
+var p4=new Student();
+console.log(p3.sayhello===p4.sayhello);
+-------------------------
+
+function fun(name) {
+        this.name=name;
+    }
+    fun.prototype.sayhello=function () {
+
+    }
+
+    var p1=new fun("dsfs");
+    var p2=new fun("dsfdfsd");
+    console.log(p1.sayhello===p2.sayhello);
+
+p3和p4不相等，p1和p2就相等		
+
+3.
+			// 对象的类型是什么
+			// typeof 操作对象 统一返回的是 object	
+			function Person () {}
+			var p = new Person();		// 常常描述为 Person 对象
+			
+			// 创建 xxx 对象, 描述的是构造方法的名字
+			// 构造函数的名字就是 对象的类型的 名字
+			
+						// 每一个对象都可以访问到一个属性
+			// 其中有一个是 constructor ( 构造器 )
+			// 每一个对象的 constructor 属性描述的是其构造函数
+			
+			function Fn() {}
+			
+			var o = new Fn();
+			
+			console.log( o.constructor === Fn ); 
+			
+			// 每一个对象都链接到 其 原型对象上 
+			// 对象的 constructor 属性是其原型对象提供的
+			
+			var obj = {};
+			
+			console.log( obj.constructor );
+			
+			// 每一个对象都有原型对象
+			
+			
+			// 如何获得对象的类型???
+	// var Person = function () {};
+			
+			function Person () {}
+			
+			var p = new Person();
+			
+			// 1, 获得对象的构造函数
+			var ctr = p.constructor;
+			// 2, 将函数转换为字符串
+			var s = "" + ctr;		// 'function Person () {}'
+			// 3, 将 function 与 ( 之间的字符串截取出来
+			// alert( s );
+			
+			// 3.1 传统的字符串处理函数
+			/*
+			var start = s.replace("function", "|").indexOf( '|' );
+			if ( start != -1 ) {
+				var end = s.replace("function", "|").indexOf('(');
+				if ( end != -1 ) {
+					var name = s.replace("function", "|").slice(start + 2, end);
+					alert( "|" + name + "|" );
+				}
+			}
+			*/
+			// 找start 和 end
+			// if (start != -1 && end != -1) ...
+			
+			// string <string>.replace( <string>, <string> )
+			// number <string>.indexOf( <string> )
+			// string <string>.slice( startIndex, endIndex )
+			
+			
+			// 简化1, 将重复的字符串处理合并, 利用一个变量来描述
+			// s = s.replace("function", "|");	// '| 名字() {}'
+			// 简化2, if 嵌套 if 代码很复杂
+			/*
+			var start = s.indexOf( '|' );
+			if ( start != -1 ) {
+				var end = s.indexOf('(');
+				if ( end != -1 ) {
+					var name = s.slice(start + 2, end);
+					alert( "|" + name + "|" );
+				}
+			}*/
+			
+			// 获得开始的索引, 获得结束的索引, 如果索引符合要求, 就获得字符串
+			/*
+			var start = s.indexOf( '|' );
+			var end = s.indexOf('(');
+			if ( start != -1 && end != -1 ) {
+				var name = s.slice(start + 2, end);
+				alert( "|" + name + "|" );				
+			}*/
+			
+			
+			// 3.2 利用正则表达式
+			// 'function Person () {}'
+			/*
+			var r = /function (.+)\(/;
+			var name = r.exec( s )[ 1 ];
+			alert( "|" + name + "|" );
+			*/
+		
+			// 3.3 函数有一个属性, 叫 name 该属性表示函数的名字
+			alert ( ctr.name );	// IE 8 不支持		
+			
 			
